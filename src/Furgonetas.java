@@ -8,8 +8,8 @@ public class Furgonetas extends ArrayList<Furgoneta> {
 
     private Furgonetas() {}
 
-    public Furgonetas(int nfurg, int nest, int seed, Estaciones estaciones) {
-        this.myRandom = new Random((long)seed);
+    public Furgonetas(int nfurg, int nest, long seed, Estaciones estaciones) {
+        this.myRandom = new Random(seed);
 
         Furgoneta f;
         for (int i = 0; i < nfurg; ++i) {
