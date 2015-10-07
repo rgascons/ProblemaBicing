@@ -12,7 +12,7 @@ public class Estado {
     public Estado(Furgonetas furgonetas, Estaciones estaciones, ArrayList bicisE) {
     }
 
-    public Estado(int nf,) {
+    public Estado(int nf) {
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
         this.estaciones = estaciones;
     }
