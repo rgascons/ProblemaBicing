@@ -3,19 +3,16 @@ import IA.Bicing.Estaciones;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Furgonetas extends ArrayList<Furgoneta> {
-    private Random myRandom;
-
-    private Furgonetas() {}
+public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
 
     public Furgonetas(int nfurg, int nest, long seed, Estaciones estaciones) {
-        this.myRandom = new Random(seed);
+        Random myRandom = new Random(seed);
 
         Furgoneta f;
         for (int i = 0; i < nfurg; ++i) {
-            int idEstOrigen = this.myRandom.nextInt(nest);
-            int idPrimDestino = this.myRandom.nextInt(nest);
-            int idSegDestino = this.myRandom.nextInt(nest);
+            int idEstOrigen = myRandom.nextInt(nest);
+            int idPrimDestino = myRandom.nextInt(nest);
+            int idSegDestino = myRandom.nextInt(nest);
             f = new Furgoneta(
                     estaciones.get(idEstOrigen),
                     estaciones.get(idPrimDestino),
