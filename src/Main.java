@@ -8,7 +8,7 @@ public class Main {
 
         Estaciones estaciones = new Estaciones(20, 60, 0, 1234);
         System.out.println("Hello World!");
-        //Problem problem = new Problem(estaciones, new FuncionSucesores(), new GoalTest(), new FuncionHeuristica());
+        //Problem problem = new Problem(estaciones, new FuncionSucesora(), new GoalTest(), new FuncionHeuristica());
         Search search = new AStarSearch(new GraphSearch());
         //SearchAgent agent = new SearchAgent(problem, search);
 
