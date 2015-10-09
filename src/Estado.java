@@ -47,10 +47,35 @@ public class Estado {
     }
 
     public boolean puedeSustituirEstacion(int idEVieja, int idENueva, int idF) {
-        return idENueva != idEVieja && (furgonetas.get(idF).getPrimerDestino().equals(estaciones.get(idEVieja)));
+        return dentroLimitesEstaciones(idEVieja) &&
+                dentroLimitesEstaciones(idENueva) &&
+                dentroLimitesFurgonetas(idF) &&
+                idENueva != idEVieja &&
+                coincideEstacionDestino(idF, idEVieja);
     }
 
-    private boolean dentroLimites(int id) {
+    public void sustituirEstacion(int idEVieja, int idENueva, int idF) {
+        Furgoneta f = furgonetas.get(idF);
+        if (f.getPrimerDestino().equals(estaciones.get(idEVieja))) f.setPrimerDestino(estaciones.get(idENueva));
+        else f.setSegundoDestino(estaciones.get(idENueva));
+    }
+
+    public boolean puedeDejarBicis(int idF, int idE, int n) {
+        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF) && n > 0 && coincideEstacionDestino(idF, idE);
+    }
+
+    public void dejarBicis(int idF, int idE, int n) {
+        Furgoneta f = furgonetas.get(idF);
+        if (f.getPrimerDestino().equals(estaciones.get(idE))) f.setBicisPrimeraEstacion(n);
+    }
+
+    private boolean coincideEstacionDestino(int idF, int idE) {
+        return furgonetas.get(idF).getPrimerDestino().equals(estaciones.get(idE)) || furgonetas.get(idF).getSegundoDestino().equals(estaciones.get(idE));
+    }
+
+    private boolean dentroLimitesEstaciones(int id) {
         return 0 >= id && id < estaciones.size();
     }
+
+    private boolean dentroLimitesFurgonetas(int id) {return 0 >= id && id < furgonetas.size();}
 }
