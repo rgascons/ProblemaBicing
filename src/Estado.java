@@ -60,17 +60,21 @@ public class Estado {
         else f.setSegundoDestino(estaciones.get(idENueva));
     }
 
-    public boolean puedeDejarBicis(int idF, int idE, int n) {
-        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF) && n > 0 && furgonetas.get(idF).getBicisEstacionOrigen() >= n;
+    //TODO: Decidir si se hace implicitamente a la primera estacion o cambiar
+    public boolean puedeDejarBicis(int idF, /*int idE, */int n) {
+        return dentroLimitesFurgonetas(idF) &&
+                //dentroLimitesEstaciones(idE) &&
+                n > 0 && furgonetas.get(idF).getBicisEstacionOrigen() >= n;
     }
 
+    //TODO: Lo de arriba implica lo de abajo
     public void dejarBicis(int idF, int idE, int n) {
         Furgoneta f = furgonetas.get(idF);
         if (f.getPrimerDestino().equals(estaciones.get(idE))) f.setBicisPrimeraEstacion(n);
     }
 
     public boolean puedeRecogerBicis(int idF, int n) {
-        return n >= 0 && n <= 30 && dentroLimitesFurgonetas(idF);
+        return n >= 0 && n <= 30 && dentroLimitesFurgonetas(idF) && furgonetas.get(idF).getOrigen() != null;
     }
 
     public void recogerBicis(int idF, int n) {
