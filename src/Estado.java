@@ -12,7 +12,7 @@ public class Estado {
             "dejar_bicis(idF, idE, n)",
             "recoger_bicis(idF, idE, n)",
             "cambiar_estacion_origen(idF, idE)",
-            "quitar_estacion(estacion, idF)"
+            "quitar_estacion(idE, idF)"
     };
     
     public Estado(Furgonetas furgonetas, Estaciones estaciones, ArrayList bicisE) {
@@ -61,7 +61,7 @@ public class Estado {
     }
 
     public boolean puedeDejarBicis(int idF, int idE, int n) {
-        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF) && n > 0 && coincideEstacionDestino(idF, idE);
+        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF) && n > 0 && furgonetas.get(idF).getBicisEstacionOrigen() >= n;
     }
 
     public void dejarBicis(int idF, int idE, int n) {
@@ -69,9 +69,41 @@ public class Estado {
         if (f.getPrimerDestino().equals(estaciones.get(idE))) f.setBicisPrimeraEstacion(n);
     }
 
+    public boolean puedeRecogerBicis(int idF, int n) {
+        return n >= 0 && n <= 30 && dentroLimitesFurgonetas(idF);
+    }
+
+    public void recogerBicis(int idF, int n) {
+        furgonetas.get(idF).setBicisEstacionOrigen(n);
+    }
+
+    private boolean puedeCambiarEstacionOrigen(int idE, int idF) {
+        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF);
+    }
+
+    private void cambiarEstacionOrigen(int idE, int idF) {
+        furgonetas.get(idF).setOrigen(estaciones.get(idE));
+    }
+
+    private boolean puedeQuitarEstacion(int idE, int idF) {
+        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF) && existeEstacionFurgoneta(idF, idE);
+    }
+
+    private void quitarEstacion(int idE, int idF) {
+        Furgoneta f = furgonetas.get(idF);
+        if (f.getPrimerDestino().equals(estaciones.get(idE))) f.setPrimerDestino(null);
+        else f.setSegundoDestino(null);
+    }
+
+    private boolean existeEstacionFurgoneta(int idE, int idF) {
+        return (furgonetas.get(idF).getPrimerDestino() != null && furgonetas.get(idF).getPrimerDestino().equals(estaciones.get(idE))) ||
+        (furgonetas.get(idF).getSegundoDestino() != null && furgonetas.get(idF).getSegundoDestino().equals(estaciones.get(idE)));
+    }
+
     private boolean coincideEstacionDestino(int idF, int idE) {
         return furgonetas.get(idF).getPrimerDestino().equals(estaciones.get(idE)) || furgonetas.get(idF).getSegundoDestino().equals(estaciones.get(idE));
     }
+
 
     private boolean dentroLimitesEstaciones(int id) {
         return 0 >= id && id < estaciones.size();
