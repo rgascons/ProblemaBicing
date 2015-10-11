@@ -27,16 +27,16 @@ public class FuncionHeuristica implements HeuristicFunction{
 
         double sum_acord = 0;
 
-        /*
+
         ArrayList<Estacion> est = state.getEstaciones();
         for (int i = 0; i < est.size(); ++i)
         {
             Estacion e = est.get(i);
-            int bicis_llevadas = n.getBicisE.get(i);
+            int bicis_llevadas = state.getBicisE().get(i);
             int eur = (e.getDemanda() >= e.getNumBicicletasNext()+bicis_llevadas)? bicis_llevadas: -bicis_llevadas;
             sum_acord += eur;
         }
-        */
+
 
         suma = sum_cost + sum_acord;
         return suma;
