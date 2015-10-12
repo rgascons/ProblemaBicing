@@ -6,7 +6,7 @@ import java.util.Random;
 public class Estado {
     private Furgonetas furgonetas;
     private Estaciones estaciones;
-    private ArrayList bicisE;
+    private ArrayList<Integer> bicisE;
     private static Random r;
     public static String[] op = {"sustituir_estacion(nueva_estacion, estacion_antigua, idF)",
             "dejar_bicis(idF, idE, n)",
@@ -18,6 +18,7 @@ public class Estado {
     public Estado(int nf, Estaciones est) {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
+        bicisE = new ArrayList<Integer>();
     }
 
     public Estado(Estado estado) {
@@ -41,6 +42,10 @@ public class Estado {
     public void setEstaciones(Estaciones est) {
         estaciones = est;
     }
+
+    public ArrayList<Integer> getBicisE() {return bicisE;}
+
+    public void setBicisE(ArrayList bicis) {bicisE = bicis;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
         return //dentroLimitesEstaciones(idEVieja) &&
