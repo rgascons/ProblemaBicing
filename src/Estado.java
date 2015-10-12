@@ -1,12 +1,12 @@
+import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Estado {
     private Furgonetas furgonetas;
     private Estaciones estaciones;
-    private ArrayList<Integer> bicisE;
+    private ArrayList bicisE;
     private static Random r;
     public static String[] op = {"sustituir_estacion(nueva_estacion, estacion_antigua, idF)",
             "dejar_bicis(idF, idE, n)",
@@ -14,20 +14,16 @@ public class Estado {
             "cambiar_estacion_origen(idF, idE)",
             "quitar_estacion(idE, idF)"
     };
-    
-    public Estado(Furgonetas furgonetas, Estaciones estaciones, ArrayList bicisE) {
-    }
 
-    public Estado(int nf, Estaciones estaciones) {
+    public Estado(int nf, Estaciones est) {
+        estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
-        this.estaciones = estaciones;
-    }
-    public Estado(int nf, int ne) {
-
     }
 
     public Estado(Estado estado) {
-        //TODO: constructor por copia
+        this.furgonetas = estado.furgonetas;
+        this.estaciones = estado.estaciones;
+        this.bicisE = estado.bicisE;
     }
 
     public Furgonetas getFurgonetas() {
@@ -42,78 +38,74 @@ public class Estado {
         return estaciones;
     }
 
-    public void setEstaciones(Estaciones estaciones) {
-        this.estaciones = estaciones;
+    public void setEstaciones(Estaciones est) {
+        estaciones = est;
     }
 
-    public ArrayList<Integer> getBicisE() { return bicisE; }
-
-    public boolean puedeSustituirEstacion(int idEVieja, int idENueva, int idF) {
-        return dentroLimitesEstaciones(idEVieja) &&
-                dentroLimitesEstaciones(idENueva) &&
-                dentroLimitesFurgonetas(idF) &&
-                idENueva != idEVieja &&
-                coincideEstacionDestino(idF, idEVieja);
+    public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
+        return //dentroLimitesEstaciones(idEVieja) &&
+                //dentroLimitesEstaciones(idENueva) &&
+                //dentroLimitesFurgonetas(idF) &&
+                !nueva.equals(vieja) &&
+                coincideEstacionDestino(vieja, f);
     }
 
-    public void sustituirEstacion(int idEVieja, int idENueva, int idF) {
-        Furgoneta f = furgonetas.get(idF);
-        if (f.getPrimerDestino().equals(estaciones.get(idEVieja))) f.setPrimerDestino(estaciones.get(idENueva));
-        else f.setSegundoDestino(estaciones.get(idENueva));
+    public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
+        if (f.getPrimerDestino().equals(vieja)) f.setPrimerDestino(nueva);
+        else f.setSegundoDestino(nueva);
     }
 
-    //TODO: Decidir si se hace implicitamente a la primera estacion o cambiar
-    public boolean puedeDejarBicis(int idF, /*int idE, */int n) {
-        return dentroLimitesFurgonetas(idF) &&
+    public boolean puedeDejarBicis(Furgoneta f, int n) {
+        return //dentroLimitesFurgonetas(idF) &&
                 //dentroLimitesEstaciones(idE) &&
-                n > 0 && furgonetas.get(idF).getBicisEstacionOrigen() >= n;
+                n > 0 && n <= f.getBicisEstacionOrigen();
     }
 
-    //TODO: Lo de arriba implica lo de abajo
-    public void dejarBicis(int idF, int idE, int n) {
-        Furgoneta f = furgonetas.get(idF);
-        if (f.getPrimerDestino().equals(estaciones.get(idE))) f.setBicisPrimeraEstacion(n);
+    public void dejarBicis(Furgoneta f, int n) {
+        f.setBicisPrimeraEstacion(n);
     }
 
-    public boolean puedeRecogerBicis(int idF, int n) {
-        return n >= 0 && n <= 30 && dentroLimitesFurgonetas(idF) && furgonetas.get(idF).getOrigen() != null;
+    public boolean puedeRecogerBicis(Furgoneta f, int n) {
+        return n >= 0 && n <= 30 &&
+                //dentroLimitesFurgonetas(idF)
+                f.getOrigen() != null;
     }
 
-    public void recogerBicis(int idF, int n) {
-        furgonetas.get(idF).setBicisEstacionOrigen(n);
+    public void recogerBicis(Furgoneta f, int n) {
+        f.setBicisEstacionOrigen(n);
     }
 
-    private boolean puedeCambiarEstacionOrigen(int idE, int idF) {
-        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF);
+    private boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
+        return true;
     }
 
-    private void cambiarEstacionOrigen(int idE, int idF) {
-        furgonetas.get(idF).setOrigen(estaciones.get(idE));
+    public void cambiarEstacionOrigen(Estacion e, Furgoneta f) {
+        f.setOrigen(e);
     }
 
-    private boolean puedeQuitarEstacion(int idE, int idF) {
-        return dentroLimitesEstaciones(idE) && dentroLimitesFurgonetas(idF) && existeEstacionFurgoneta(idF, idE);
+    public boolean puedeQuitarEstacion(Estacion e, Furgoneta f) {
+        return //dentroLimitesEstaciones(idE) &&
+                //dentroLimitesFurgonetas(idF) &&
+                existeEstacionFurgoneta(e, f);
     }
 
-    private void quitarEstacion(int idE, int idF) {
-        Furgoneta f = furgonetas.get(idF);
-        if (f.getPrimerDestino().equals(estaciones.get(idE))) f.setPrimerDestino(null);
+    public void quitarEstacion(Estacion e, Furgoneta f) {
+        if (f.getPrimerDestino().equals(e)) f.setPrimerDestino(null);
         else f.setSegundoDestino(null);
     }
 
-    private boolean existeEstacionFurgoneta(int idE, int idF) {
-        return (furgonetas.get(idF).getPrimerDestino() != null && furgonetas.get(idF).getPrimerDestino().equals(estaciones.get(idE))) ||
-        (furgonetas.get(idF).getSegundoDestino() != null && furgonetas.get(idF).getSegundoDestino().equals(estaciones.get(idE)));
+    private boolean existeEstacionFurgoneta(Estacion e, Furgoneta f) {
+        return (f.getPrimerDestino() != null && f.getPrimerDestino().equals(e)) ||
+        (f.getSegundoDestino() != null && f.getSegundoDestino().equals(e));
     }
 
-    private boolean coincideEstacionDestino(int idF, int idE) {
-        return furgonetas.get(idF).getPrimerDestino().equals(estaciones.get(idE)) || furgonetas.get(idF).getSegundoDestino().equals(estaciones.get(idE));
+    private boolean coincideEstacionDestino(Estacion e, Furgoneta f) {
+        return f.getPrimerDestino().equals(e) || f.getSegundoDestino().equals(e);
     }
 
-
-    private boolean dentroLimitesEstaciones(int id) {
+    /*private boolean dentroLimitesEstaciones(int id) {
         return 0 >= id && id < estaciones.size();
     }
 
-    private boolean dentroLimitesFurgonetas(int id) {return 0 >= id && id < furgonetas.size();}
+    private boolean dentroLimitesFurgonetas(int id) {return 0 >= id && id < furgonetas.size();}*/
 }
