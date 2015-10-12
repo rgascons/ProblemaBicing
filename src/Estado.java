@@ -75,7 +75,7 @@ public class Estado {
         f.setBicisEstacionOrigen(n);
     }
 
-    private boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
+    public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
         return true;
     }
 
