@@ -22,10 +22,10 @@ public class Estado {
     }
 
     public Estado(Estado estado) {
-        //TODO: estos clones no hacen una deep copy. Hacer el contructor a base de news
-        this.furgonetas = (Furgonetas) estado.furgonetas.clone();
-        this.estaciones = (Estaciones) estado.estaciones.clone();
-        this.bicisE = (ArrayList<Integer>) estado.bicisE.clone();
+        //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
+        this.furgonetas = estado.furgonetas.clone();
+        this.estaciones = estado.estaciones;        //En principio estaciones es inmutable verdad? No haría falta un clone
+        this.bicisE = (ArrayList<Integer>) estado.bicisE.clone();   //Falta arreglar bicisE
     }
 
     public Furgonetas getFurgonetas() {

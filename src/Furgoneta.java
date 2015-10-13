@@ -1,6 +1,6 @@
 import IA.Bicing.Estacion;
 
-public class Furgoneta {
+public class Furgoneta implements Cloneable{
     private Estacion origen;
     private Estacion primerDestino;
     private Estacion segundoDestino;
@@ -54,5 +54,10 @@ public class Furgoneta {
 
     public void setBicisPrimeraEstacion(int bicisPrimeraEstacion) {
         this.bicisPrimeraEstacion = bicisPrimeraEstacion;
+    }
+
+    @Override
+    public Furgoneta clone() {
+        return new Furgoneta(origen, primerDestino, segundoDestino, bicisEstacionOrigen, bicisPrimeraEstacion);
     }
 }

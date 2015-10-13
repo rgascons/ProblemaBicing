@@ -5,7 +5,18 @@ import java.util.Random;
 
 public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
 
+    private int nfurg;
+    private int nest;
+    private long seed;
+    private Estaciones estaciones;
+
     public Furgonetas(int nfurg, int nest, long seed, Estaciones estaciones) {
+
+        this.nfurg = nfurg;
+        this.nest = nest;
+        this.seed = seed;
+        this.estaciones = estaciones;
+
         Random myRandom = new Random(seed);
 
         Furgoneta f;
@@ -22,5 +33,14 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
                     );
             this.add(f);
         }
+    }
+
+    @Override
+    public Furgonetas clone() {
+        Furgonetas nF = new Furgonetas(nfurg, nest, seed, estaciones);
+        for (Furgoneta f : this) {
+            nF.add(f.clone());
+        }
+        return nF;
     }
 }
