@@ -22,9 +22,10 @@ public class Estado {
     }
 
     public Estado(Estado estado) {
-        this.furgonetas = estado.furgonetas;
-        this.estaciones = estado.estaciones;
-        this.bicisE = estado.bicisE;
+        //TODO: estos clones no hacen una deep copy. Hacer el contructor a base de news
+        this.furgonetas = (Furgonetas) estado.furgonetas.clone();
+        this.estaciones = (Estaciones) estado.estaciones.clone();
+        this.bicisE = (ArrayList<Integer>) estado.bicisE.clone();
     }
 
     public Furgonetas getFurgonetas() {
