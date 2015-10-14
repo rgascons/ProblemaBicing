@@ -1,6 +1,6 @@
 import IA.Bicing.Estacion;
 
-public class EstacionID  {
+public class EstacionID implements Cloneable {
     private Estacion est;
     private int id;
     private int bicis;
@@ -32,5 +32,9 @@ public class EstacionID  {
 
     public void setBicis(int bicis) {
         this.bicis = bicis;
+    }
+
+    public EstacionID clone() {
+        return new EstacionID(this.est, this.id, this.bicis);
     }
 }
