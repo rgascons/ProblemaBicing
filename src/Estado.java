@@ -7,7 +7,6 @@ public class Estado {
     private Furgonetas furgonetas;
     private Estaciones estaciones;
     private ArrayList<Integer> bicisE;
-    private static Random r;
     public static String[] op = {"sustituir_estacion(nueva_estacion, estacion_antigua, idF)",
             "dejar_bicis(idF, idE, n)",
             "recoger_bicis(idF, idE, n)",
@@ -62,18 +61,16 @@ public class Estado {
     }
 
     public boolean puedeDejarBicis(Furgoneta f, int n) {
-        return //dentroLimitesFurgonetas(idF) &&
-                //dentroLimitesEstaciones(idE) &&
-                n > 0 && n <= f.getBicisEstacionOrigen();
+        return n > 0 && n <= f.getBicisEstacionOrigen();
     }
 
     public void dejarBicis(Furgoneta f, int n) {
         f.setBicisPrimeraEstacion(n);
+
     }
 
     public boolean puedeRecogerBicis(Furgoneta f, int n) {
         return n >= 0 && n <= 30 &&
-                //dentroLimitesFurgonetas(idF)
                 f.getOrigen() != null;
     }
 
@@ -90,9 +87,7 @@ public class Estado {
     }
 
     public boolean puedeQuitarEstacion(Estacion e, Furgoneta f) {
-        return //dentroLimitesEstaciones(idE) &&
-                //dentroLimitesFurgonetas(idF) &&
-                existeEstacionFurgoneta(e, f);
+        return existeEstacionFurgoneta(e, f);
     }
 
     public void quitarEstacion(Estacion e, Furgoneta f) {

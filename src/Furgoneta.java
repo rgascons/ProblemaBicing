@@ -1,6 +1,6 @@
 import IA.Bicing.Estacion;
 
-public class Furgoneta implements Cloneable{
+public class Furgoneta implements Cloneable {
     private Estacion origen;
     private Estacion primerDestino;
     private Estacion segundoDestino;
