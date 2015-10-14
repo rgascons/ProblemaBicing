@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcb9c8bc-500a-4891-942a-2b06ec242f10" name="Default" comment="constructora estado">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/EstacionID.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EstacionID.java" afterPath="$PROJECT_DIR$/src/EstacionID.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Estado.java" afterPath="$PROJECT_DIR$/src/Estado.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Furgoneta.java" afterPath="$PROJECT_DIR$/src/Furgoneta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProblemaBicing.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,7 +11,8 @@
     <ignored path=".idea/dataSources.local.xml" />
     <file path="/Dummy.txt" changelist="dcb9c8bc-500a-4891-942a-2b06ec242f10" time="1444813923018" ignored="false" />
     <file path="/EstacionesID.java" changelist="dcb9c8bc-500a-4891-942a-2b06ec242f10" time="1444814794367" ignored="false" />
-    <file path="/EstacionID.java" changelist="dcb9c8bc-500a-4891-942a-2b06ec242f10" time="1444815062549" ignored="false" />
+    <file path="/EstacionID.java" changelist="dcb9c8bc-500a-4891-942a-2b06ec242f10" time="1444816038952" ignored="false" />
+    <file path="/Estado.java" changelist="dcb9c8bc-500a-4891-942a-2b06ec242f10" time="1444816555588" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,19 +91,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estado.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Estado.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Estado.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="5" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.0">
+            <state line="56" column="71" selection-start="1970" selection-end="1970" vertical-scroll-proportion="0.5644955">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EstacionID.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EstacionID.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="27" selection-start="630" selection-end="630" vertical-scroll-proportion="0.70477384">
+            <state line="37" column="66" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -173,9 +168,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/Furgoneta.java" />
-        <option value="$PROJECT_DIR$/src/Estado.java" />
         <option value="$PROJECT_DIR$/src/Experimentos/EstacionesID.java" />
         <option value="$PROJECT_DIR$/src/EstacionID.java" />
+        <option value="$PROJECT_DIR$/src/Estado.java" />
       </list>
     </option>
   </component>
@@ -657,13 +652,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estaciones.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -702,13 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgoneta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estacion.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="152" selection-end="152" vertical-scroll-proportion="0.110246435">
@@ -716,16 +697,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estado.java">
+    <entry file="file://$PROJECT_DIR$/src/Furgoneta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="5" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.0">
+        <state line="23" column="29" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="27" selection-start="630" selection-end="630" vertical-scroll-proportion="0.70477384">
+        <state line="37" column="66" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="71" selection-start="1970" selection-end="1970" vertical-scroll-proportion="0.5644955">
           <folding />
         </state>
       </provider>

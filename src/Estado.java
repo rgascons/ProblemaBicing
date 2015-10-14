@@ -6,7 +6,7 @@ import java.util.Random;
 public class Estado {
     private Furgonetas furgonetas;
     private Estaciones estaciones;
-    private ArrayList<Integer> bicisE;
+    private ArrayList<EstacionID> estacionesID;
     public static String[] op = {"sustituir_estacion(nueva_estacion, estacion_antigua, idF)",
             "dejar_bicis(idF, idE, n)",
             "recoger_bicis(idF, idE, n)",
@@ -17,14 +17,23 @@ public class Estado {
     public Estado(int nf, Estaciones est) {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
-        bicisE = new ArrayList<Integer>();
+        estacionesID = new ArrayList<EstacionID>(estaciones.size());
+        for (int i = 0; i < estaciones.size(); ++i) {
+            EstacionID e = estacionesID.get(i);
+            e.setEst(estaciones.get(i));
+            e.setId(i);
+            e.setBicis(0);
+        }
     }
 
     public Estado(Estado estado) {
         //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         this.estaciones = estado.estaciones;        //En principio estaciones es inmutable verdad? No haría falta un clone
-        this.bicisE = (ArrayList<Integer>) estado.bicisE.clone();   //Falta arreglar bicisE
+        this.estacionesID = new ArrayList<EstacionID>();
+        for (EstacionID e : estado.getEstacionesID()) {
+              estacionesID.add(e.clone());
+        }
     }
 
     public Furgonetas getFurgonetas() {
@@ -43,9 +52,9 @@ public class Estado {
         estaciones = est;
     }
 
-    public ArrayList<Integer> getBicisE() {return bicisE;}
+    public ArrayList<EstacionID> getEstacionesID() {return estacionesID;}
 
-    public void setBicisE(ArrayList bicis) {bicisE = bicis;}
+    public void setBicisE(ArrayList<EstacionID> est) {this.estacionesID = est;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
         return //dentroLimitesEstaciones(idEVieja) &&
