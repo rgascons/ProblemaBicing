@@ -2,12 +2,16 @@ import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Estado {
     private Furgonetas furgonetas;
-    private Estaciones estaciones;
+    private static Estaciones estaciones;
     //private ArrayList<EstacionID> estacionesID;
     private ArrayList<Integer> bicisE;
+    private static Map<Estacion, Integer> m;
+
 
     public static String SUSTITUIR_ESTACION = "sustituir_estacion";
     public static String DEJAR_BICIS = "dejar_bicis";
@@ -26,12 +30,17 @@ public class Estado {
             e.setBicis(0);
         }*/
         bicisE = new ArrayList<Integer>();
+        m = new HashMap<Estacion, Integer>();
+        for (int i = 0; i < estaciones.size(); ++i) {
+            m.put(estaciones.get(i), i);
+        }
     }
 
     public Estado(Estado estado) {
         //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
-        this.estaciones = estado.estaciones;        //En principio estaciones es inmutable verdad? No haría falta un clone
+        estaciones = estado.getEstaciones();
+        //En principio estaciones es inmutable verdad? No haría falta un clone
                                                     //tengo mis dudas, mira NumBicicletasNoUsadas NumBicicletasNext en Estacion
         /*this.estacionesID = new ArrayList<EstacionID>();
         for (EstacionID e : estado.getEstacionesID()) {
@@ -41,6 +50,14 @@ public class Estado {
         for (Integer i : estado.getBicisE()) {
             this.bicisE.add(i);
         }
+    }
+
+    public static Map<Estacion, Integer> getM() {
+        return m;
+    }
+
+    public static void setM(Map<Estacion, Integer> map) {
+        m = map;
     }
 
     public Furgonetas getFurgonetas() {
@@ -80,6 +97,12 @@ public class Estado {
 
     public void dejarBicis(Furgoneta f, int n) {
         f.setBicisPrimeraEstacion(n);
+        int ip = m.get(f.getPrimerDestino());
+        int is = m.get(f.getSegundoDestino());
+        int bp = bicisE.get(ip) + n;
+        int bs = f.getBicisEstacionOrigen() - bp;
+        bicisE.set(ip, bp);
+        bicisE.set(is, bs);
     }
 
     public boolean puedeRecogerBicis(Furgoneta f, int n) {
@@ -89,6 +112,8 @@ public class Estado {
 
     public void recogerBicis(Furgoneta f, int n) {
         f.setBicisEstacionOrigen(n);
+        int i = m.get(f.getOrigen());
+        bicisE.set(i, bicisE.get(i) - n);
     }
 
     public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
@@ -104,8 +129,14 @@ public class Estado {
     }
 
     public void quitarEstacion(Estacion e, Furgoneta f) {
-        if (f.getPrimerDestino().equals(e)) f.setPrimerDestino(null);
-        else f.setSegundoDestino(null);
+        if (f.getPrimerDestino().equals(e)) {
+            f.setPrimerDestino(null);
+            bicisE.set(m.get(f.getPrimerDestino()), 0);
+        }
+        else {
+            f.setSegundoDestino(null);
+            bicisE.set(m.get(f.getSegundoDestino()), 0);
+        }
     }
 
     private boolean existeEstacionFurgoneta(Estacion e, Furgoneta f) {
