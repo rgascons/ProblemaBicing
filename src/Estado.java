@@ -7,12 +7,12 @@ public class Estado {
     private Furgonetas furgonetas;
     private Estaciones estaciones;
     private ArrayList<EstacionID> estacionesID;
-    public static String[] op = {"sustituir_estacion(nueva_estacion, estacion_antigua, idF)",
-            "dejar_bicis(idF, idE, n)",
-            "recoger_bicis(idF, idE, n)",
-            "cambiar_estacion_origen(idF, idE)",
-            "quitar_estacion(idE, idF)"
-    };
+
+    public static String SUSTITUIR_ESTACION = "sustituir_estacion";
+    public static String DEJAR_BICIS = "dejar_bicis";
+    public static String RECOGER_BICIS = "recoger_bicis";
+    public static String CAMBIAR_ESTACION_ORIGIEN = "cambiar_estacion_origen";
+    public static String QUITAR_ESTACION = "quitar_estacion";
 
     public Estado(int nf, Estaciones est) {
         estaciones = est;
