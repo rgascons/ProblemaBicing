@@ -59,8 +59,6 @@ public class Estado {
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
         return //dentroLimitesEstaciones(idEVieja) &&
-                //dentroLimitesEstaciones(idENueva) &&
-                //dentroLimitesFurgonetas(idF) &&
                 !nueva.equals(vieja) &&
                 coincideEstacionDestino(vieja, f);
     }
@@ -76,7 +74,6 @@ public class Estado {
 
     public void dejarBicis(Furgoneta f, int n) {
         f.setBicisPrimeraEstacion(n);
-
     }
 
     public boolean puedeRecogerBicis(Furgoneta f, int n) {
@@ -114,9 +111,4 @@ public class Estado {
         return f.getPrimerDestino().equals(e) || f.getSegundoDestino().equals(e);
     }
 
-    /*private boolean dentroLimitesEstaciones(int id) {
-        return 0 >= id && id < estaciones.size();
-    }
-
-    private boolean dentroLimitesFurgonetas(int id) {return 0 >= id && id < furgonetas.size();}*/
 }
