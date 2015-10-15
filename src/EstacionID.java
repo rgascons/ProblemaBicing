@@ -4,6 +4,7 @@ public class EstacionID implements Cloneable {
     private Estacion est;
     private int id;
     private int bicis;
+
     public EstacionID(Estacion est, int id, int bicis) {
         this.setEst(est);
         this.setId(id);

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 public class Estado {
     private Furgonetas furgonetas;
     private Estaciones estaciones;
-    private ArrayList<EstacionID> estacionesID;
+    //private ArrayList<EstacionID> estacionesID;
+    private ArrayList<Integer> bicisE;
 
     public static String SUSTITUIR_ESTACION = "sustituir_estacion";
     public static String DEJAR_BICIS = "dejar_bicis";
@@ -17,13 +18,14 @@ public class Estado {
     public Estado(int nf, Estaciones est) {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
-        estacionesID = new ArrayList<EstacionID>(estaciones.size());
+        /*estacionesID = new ArrayList<EstacionID>(estaciones.size());
         for (int i = 0; i < estaciones.size(); ++i) {
             EstacionID e = estacionesID.get(i);
             e.setEst(estaciones.get(i));
             e.setId(i);
             e.setBicis(0);
-        }
+        }*/
+        bicisE = new ArrayList<Integer>();
     }
 
     public Estado(Estado estado) {
@@ -31,9 +33,13 @@ public class Estado {
         this.furgonetas = estado.furgonetas.clone();
         this.estaciones = estado.estaciones;        //En principio estaciones es inmutable verdad? No haría falta un clone
                                                     //tengo mis dudas, mira NumBicicletasNoUsadas NumBicicletasNext en Estacion
-        this.estacionesID = new ArrayList<EstacionID>();
+        /*this.estacionesID = new ArrayList<EstacionID>();
         for (EstacionID e : estado.getEstacionesID()) {
               estacionesID.add(e.clone());
+        }*/
+        this.bicisE = new ArrayList<Integer>();
+        for (Integer i : estado.getBicisE()) {
+            this.bicisE.add(i);
         }
     }
 
@@ -53,9 +59,9 @@ public class Estado {
         estaciones = est;
     }
 
-    public ArrayList<EstacionID> getEstacionesID() {return estacionesID;}
+    public ArrayList<Integer> getbicisE() {return bicisE;}
 
-    public void setBicisE(ArrayList<EstacionID> est) {this.estacionesID = est;}
+    public void setbicisE(ArrayList<Integer> bicisE) {this.bicisE = bicisE;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
         return //dentroLimitesEstaciones(idEVieja) &&
@@ -111,4 +117,11 @@ public class Estado {
         return f.getPrimerDestino().equals(e) || f.getSegundoDestino().equals(e);
     }
 
+    public ArrayList<Integer> getBicisE() {
+        return bicisE;
+    }
+
+    public void setBicisE(ArrayList<Integer> bicisE) {
+        this.bicisE = bicisE;
+    }
 }
