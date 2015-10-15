@@ -1,7 +1,7 @@
 import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
+
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Estado {
     private Furgonetas furgonetas;
@@ -30,6 +30,7 @@ public class Estado {
         //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         this.estaciones = estado.estaciones;        //En principio estaciones es inmutable verdad? No haría falta un clone
+                                                    //tengo mis dudas, mira NumBicicletasNoUsadas NumBicicletasNext en Estacion
         this.estacionesID = new ArrayList<EstacionID>();
         for (EstacionID e : estado.getEstacionesID()) {
               estacionesID.add(e.clone());
