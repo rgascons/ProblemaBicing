@@ -21,30 +21,36 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                     if (estado.puedeCambiarEstacionOrigen(e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.cambiarEstacionOrigen(e, f);
-                        retVal.add(new Successor(nuevoEstado.op[3], nuevoEstado));
+                        retVal.add(new Successor(Estado.CAMBIAR_ESTACION_ORIGIEN, nuevoEstado));
                     }
                     if (estado.puedeSustituirEstacion(f.getPrimerDestino(), e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.sustituirEstacion(f.getPrimerDestino(), e, f);
-                        retVal.add(new Successor(nuevoEstado.op[0], nuevoEstado));
+                        retVal.add(new Successor(Estado.SUSTITUIR_ESTACION, nuevoEstado));
                     }
                     if (estado.puedeSustituirEstacion(f.getSegundoDestino(), e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.sustituirEstacion(f.getSegundoDestino(), e, f);
-                        retVal.add(new Successor(nuevoEstado.op[0], nuevoEstado));
+                        retVal.add(new Successor(Estado.SUSTITUIR_ESTACION, nuevoEstado));
+                    }
+                    if (estado.puedeQuitarEstacion(e, f)) {
+                        Estado nuevoEstado = new Estado(estado);
+                        nuevoEstado.quitarEstacion(e, f);
+                        retVal.add(new Successor(Estado.QUITAR_ESTACION, nuevoEstado));
                     }
                 }
             }
             if (estado.puedeDejarBicis(f, f.getBicisPrimeraEstacion())) {
                 Estado nuevoEstado = new Estado(estado);
                 nuevoEstado.dejarBicis(f, f.getBicisPrimeraEstacion());
-                retVal.add(new Successor(nuevoEstado.op[1], nuevoEstado));
+                retVal.add(new Successor(Estado.DEJAR_BICIS, nuevoEstado));
             }
             if (estado.puedeRecogerBicis(f, f.getBicisEstacionOrigen())) {
                 Estado nuevoEstado = new Estado(estado);
                 nuevoEstado.recogerBicis(f, f.getBicisEstacionOrigen());
-                retVal.add(new Successor(nuevoEstado.op[2], nuevoEstado));
+                retVal.add(new Successor(Estado.RECOGER_BICIS, nuevoEstado));
             }
+
         }
         return retVal;
     }
