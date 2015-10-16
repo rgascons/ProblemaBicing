@@ -21,19 +21,42 @@ public class Estado {
     public Estado(int nf, Estaciones est) {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
-        bicisE = new ArrayList<Integer>();
-        m = new HashMap<Estacion, Integer>();
+        bicisE = new ArrayList<>();
+        m = new HashMap<>();
         for (int i = 0; i < estaciones.size(); ++i) {
             m.put(estaciones.get(i), i);
         }
         bicisE.addAll(m.values());
+
+        for (Furgoneta f : this.furgonetas)
+        {
+            Estacion e1 = f.getPrimerDestino();
+            if(e1 != null)
+            {
+                int index = m.get(e1);
+                Integer bic = this.bicisE.get(index);
+                Integer llev = f.getBicisPrimeraEstacion();
+                bic = (bic == null) ? llev : bic + llev;
+                this.bicisE.set(index, bic);
+            }
+
+            Estacion e2  = f.getSegundoDestino();
+            if(e2 != null)
+            {
+                int i2 = m.get(e2);
+                Integer bic2 = this.bicisE.get(i2);
+                Integer llev2 = f.getBicisEstacionOrigen()-f.getBicisPrimeraEstacion();
+                bic2 = (bic2 == null)? llev2 : bic2+llev2;
+                this.bicisE.set(i2,bic2);
+            }
+        }
     }
 
     public Estado(Estado estado) {
         //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         estaciones = estado.getEstaciones();
-        this.bicisE = new ArrayList<Integer>();
+        this.bicisE = new ArrayList<>();
         for (Integer i : estado.getBicisE()) {
             this.bicisE.add(i);
         }
@@ -148,12 +171,12 @@ public class Estado {
                 f.setSegundoDestino(null);
                 f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
             }
-            else {
+            /*else {
                 f.setPrimerDestino(null);
                 f.setBicisPrimeraEstacion(0);
                 f.setOrigen(null);
                 f.setBicisEstacionOrigen(0);
-            }
+            }*/
         }
         else {
             int i = m.get(f.getSegundoDestino());

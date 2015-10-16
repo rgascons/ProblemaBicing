@@ -17,7 +17,7 @@ public class FuncionHeuristica implements HeuristicFunction{
         double sum_cost = 0;
         for (Furgoneta f : furg) {
             int trayecto1 = Math.abs(f.getOrigen().getCoordX() - f.getPrimerDestino().getCoordX()) + Math.abs(f.getOrigen().getCoordY() - f.getPrimerDestino().getCoordY());
-            int trayecto2 = Math.abs(f.getPrimerDestino().getCoordX() - f.getSegundoDestino().getCoordX()) + Math.abs(f.getPrimerDestino().getCoordY() - f.getSegundoDestino().getCoordY());
+            int trayecto2 = (f.getSegundoDestino() != null)? Math.abs(f.getPrimerDestino().getCoordX() - f.getSegundoDestino().getCoordX()) + Math.abs(f.getPrimerDestino().getCoordY() - f.getSegundoDestino().getCoordY()) : 0;
             int nb1 = f.getBicisEstacionOrigen();
             int nb2 = f.getBicisEstacionOrigen() - f.getBicisPrimeraEstacion();
             int e_k1 = ((nb1 + 9) / 10);
