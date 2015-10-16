@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcb9c8bc-500a-4891-942a-2b06ec242f10" name="Default" comment="Operador quitarEstacion comentado parcialmente, ejecución no finita sin errores">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Estado.java" afterPath="$PROJECT_DIR$/src/Estado.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FuncionHeuristica.java" afterPath="$PROJECT_DIR$/src/FuncionHeuristica.java" />
+    <list default="true" id="dcb9c8bc-500a-4891-942a-2b06ec242f10" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" afterPath="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -89,20 +86,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FuncionHeuristicaC1.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FuncionHeuristicaC1.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FuncionHeuristicaC1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.7160804">
+              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estado.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Estado.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Estado.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7839196">
+            <state vertical-scroll-proportion="0.0">
               <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
               <folding>
                 <element signature="e#6803#6804#0" expanded="true" />
@@ -119,16 +116,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FuncionSucesoraHillClimbing.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -182,8 +169,8 @@
         <option value="$PROJECT_DIR$/src/makefile" />
         <option value="$PROJECT_DIR$/src/FuncionHeuristica.java" />
         <option value="$PROJECT_DIR$/src/Furgonetas.java" />
-        <option value="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" />
         <option value="$PROJECT_DIR$/src/Estado.java" />
+        <option value="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" />
       </list>
     </option>
   </component>
@@ -524,7 +511,13 @@
       <option name="project" value="LOCAL" />
       <updated>1444642449997</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Operador quitarEstacion comentado parcialmente, ejecución no finita sin errores">
+      <created>1445032025166</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1445032025166</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -923,22 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristicaC1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/AIMA.jar!/aima/search/framework/Successor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.384615">
@@ -957,9 +934,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
+    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
+          <folding>
+            <element signature="e#6803#6804#0" expanded="true" />
+            <element signature="e#6832#6833#0" expanded="true" />
+            <element signature="e#6888#6889#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7160804">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
@@ -973,24 +971,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
+    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristica.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estado.java">
+    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristicaC1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7839196">
-          <caret line="59" column="45" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="45" />
-          <folding>
-            <element signature="e#6803#6804#0" expanded="true" />
-            <element signature="e#6832#6833#0" expanded="true" />
-            <element signature="e#6888#6889#0" expanded="true" />
-            <element signature="e#6924#6925#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.7160804">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
