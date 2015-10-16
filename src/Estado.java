@@ -37,7 +37,6 @@ public class Estado {
         for (Integer i : estado.getBicisE()) {
             this.bicisE.add(i);
         }
-
         for (Furgoneta f : this.furgonetas)
         {
             Estacion e1 = f.getPrimerDestino();
@@ -92,10 +91,7 @@ public class Estado {
     public void setbicisE(ArrayList<Integer> bicisE) {this.bicisE = bicisE;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
-        if (vieja != null && nueva != null)
-            return !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
-
-        return false;
+        return vieja != null && nueva != null &&!nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
     }
 
     public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
@@ -104,22 +100,24 @@ public class Estado {
     }
 
     public boolean puedeDejarBicis(Furgoneta f, int n) {
-        return n > 0 && n <= f.getBicisEstacionOrigen();
+        return n > 0 && n <= f.getBicisEstacionOrigen() && noNulo(f.getPrimerDestino());
     }
 
     public void dejarBicis(Furgoneta f, int n) {
         f.setBicisPrimeraEstacion(n);
         int ip = m.get(f.getPrimerDestino());
-        int is = m.get(f.getSegundoDestino());
         int bp = bicisE.get(ip) + n;
-        int bs = f.getBicisEstacionOrigen() - bp;
         bicisE.set(ip, bp);
-        bicisE.set(is, bs);
+        if (noNulo(f.getSegundoDestino())) {
+            int is = m.get(f.getSegundoDestino());
+            int bs = f.getBicisEstacionOrigen() - bp;
+            bicisE.set(is, bs);
+        }
     }
 
     public boolean puedeRecogerBicis(Furgoneta f, int n) {
         return n >= 0 && n <= 30 &&
-                f.getOrigen() != null;
+                noNulo(f.getOrigen());
     }
 
     public void recogerBicis(Furgoneta f, int n) {
@@ -142,30 +140,39 @@ public class Estado {
 
     public void quitarEstacion(Estacion e, Furgoneta f) {
         if (f.getPrimerDestino().equals(e)) {
-            bicisE.set(m.get(f.getPrimerDestino()), 0);
+            int i = m.get(f.getPrimerDestino());
+            bicisE.set(i, bicisE.get(i) - f.getBicisPrimeraEstacion());
             if (f.getSegundoDestino() != null)
             {
                 f.setPrimerDestino(f.getSegundoDestino());
                 f.setSegundoDestino(null);
+                f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
             }
-            else System.out.print("Go home, you're drunk. ");
-
+            else {
+                f.setPrimerDestino(null);
+                f.setBicisPrimeraEstacion(0);
+                f.setOrigen(null);
+                f.setBicisEstacionOrigen(0);
+            }
         }
         else {
-            bicisE.set(m.get(f.getSegundoDestino()), 0);
+            int i = m.get(f.getSegundoDestino());
+            bicisE.set(i, bicisE.get(i) - (f.getBicisEstacionOrigen() - f.getBicisPrimeraEstacion()));
             f.setSegundoDestino(null);
+            f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
         }
     }
 
     private boolean existeEstacionFurgoneta(Estacion e, Furgoneta f) {
-        return (f.getPrimerDestino() != null && f.getPrimerDestino().equals(e)) ||
-        (f.getSegundoDestino() != null && f.getSegundoDestino().equals(e));
+        return (noNulo(f.getPrimerDestino()) && f.getPrimerDestino().equals(e)) ||
+        (noNulo(f.getSegundoDestino()) && f.getSegundoDestino().equals(e));
     }
 
     private boolean coincideEstacionDestino(Estacion e, Furgoneta f) {
-        assert(f.getPrimerDestino() == null); assert(f.getSegundoDestino() == null);
-        return f.getPrimerDestino().equals(e) || f.getSegundoDestino().equals(e);
+        return (noNulo(f.getPrimerDestino()) && f.getPrimerDestino().equals(e)) || (noNulo(f.getSegundoDestino()) && f.getSegundoDestino().equals(e));
     }
+
+    private boolean noNulo(Estacion e) {return e != null;}
 
     public ArrayList<Integer> getBicisE() {
         return bicisE;
