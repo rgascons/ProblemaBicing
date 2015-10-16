@@ -8,7 +8,6 @@ import java.util.Map;
 public class Estado {
     private Furgonetas furgonetas;
     private static Estaciones estaciones;
-    //private ArrayList<EstacionID> estacionesID;
     private ArrayList<Integer> bicisE;
     private static Map<Estacion, Integer> m;
 
@@ -22,30 +21,18 @@ public class Estado {
     public Estado(int nf, Estaciones est) {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
-        /*estacionesID = new ArrayList<EstacionID>(estaciones.size());
-        for (int i = 0; i < estaciones.size(); ++i) {
-            EstacionID e = estacionesID.get(i);
-            e.setEst(estaciones.get(i));
-            e.setId(i);
-            e.setBicis(0);
-        }*/
         bicisE = new ArrayList<Integer>();
         m = new HashMap<Estacion, Integer>();
         for (int i = 0; i < estaciones.size(); ++i) {
             m.put(estaciones.get(i), i);
         }
+        bicisE.addAll(m.values());
     }
 
     public Estado(Estado estado) {
         //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         estaciones = estado.getEstaciones();
-        //En principio estaciones es inmutable verdad? No haría falta un clone
-                                                    //tengo mis dudas, mira NumBicicletasNoUsadas NumBicicletasNext en Estacion
-        /*this.estacionesID = new ArrayList<EstacionID>();
-        for (EstacionID e : estado.getEstacionesID()) {
-              estacionesID.add(e.clone());
-        }*/
         this.bicisE = new ArrayList<Integer>();
         for (Integer i : estado.getBicisE()) {
             this.bicisE.add(i);
@@ -130,12 +117,13 @@ public class Estado {
 
     public void quitarEstacion(Estacion e, Furgoneta f) {
         if (f.getPrimerDestino().equals(e)) {
-            f.setPrimerDestino(null);
             bicisE.set(m.get(f.getPrimerDestino()), 0);
+            f.setPrimerDestino(null);
+
         }
         else {
-            f.setSegundoDestino(null);
             bicisE.set(m.get(f.getSegundoDestino()), 0);
+            f.setSegundoDestino(null);
         }
     }
 
