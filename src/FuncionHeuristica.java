@@ -39,6 +39,6 @@ public class FuncionHeuristica implements HeuristicFunction{
 
 
         suma = sum_cost + sum_acord;
-        return suma;
+        return -suma;
     }
 }

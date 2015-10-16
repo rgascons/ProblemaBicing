@@ -37,6 +37,30 @@ public class Estado {
         for (Integer i : estado.getBicisE()) {
             this.bicisE.add(i);
         }
+
+        for (Furgoneta f : this.furgonetas)
+        {
+            Estacion e1 = f.getPrimerDestino();
+            if(e1 != null)
+            {
+                int index = m.get(e1);
+                Integer bic = this.bicisE.get(index);
+                Integer llev = f.getBicisPrimeraEstacion();
+                bic = (bic == null) ? llev : bic + llev;
+                this.bicisE.set(index, bic);
+            }
+
+            Estacion e2  = f.getSegundoDestino();
+            if(e2 != null)
+            {
+                int i2 = m.get(e2);
+                Integer bic2 = this.bicisE.get(i2);
+                Integer llev2 = f.getBicisEstacionOrigen()-f.getBicisPrimeraEstacion();
+                bic2 = (bic2 == null)? llev2 : bic2+llev2;
+                this.bicisE.set(i2,bic2);
+            }
+        }
+
     }
 
     public static Map<Estacion, Integer> getM() {
@@ -68,9 +92,10 @@ public class Estado {
     public void setbicisE(ArrayList<Integer> bicisE) {this.bicisE = bicisE;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
-        return //dentroLimitesEstaciones(idEVieja) &&
-                !nueva.equals(vieja) &&
-                coincideEstacionDestino(vieja, f);
+        if (vieja != null && nueva != null)
+            return !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
+
+        return false;
     }
 
     public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
@@ -118,7 +143,12 @@ public class Estado {
     public void quitarEstacion(Estacion e, Furgoneta f) {
         if (f.getPrimerDestino().equals(e)) {
             bicisE.set(m.get(f.getPrimerDestino()), 0);
-            f.setPrimerDestino(null);
+            if (f.getSegundoDestino() != null)
+            {
+                f.setPrimerDestino(f.getSegundoDestino());
+                f.setSegundoDestino(null);
+            }
+            else System.out.print("Go home, you're drunk. ");
 
         }
         else {
@@ -133,6 +163,7 @@ public class Estado {
     }
 
     private boolean coincideEstacionDestino(Estacion e, Furgoneta f) {
+        assert(f.getPrimerDestino() == null); assert(f.getSegundoDestino() == null);
         return f.getPrimerDestino().equals(e) || f.getSegundoDestino().equals(e);
     }
 

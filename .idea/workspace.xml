@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcb9c8bc-500a-4891-942a-2b06ec242f10" name="Default" comment="">
+    <list default="true" id="dcb9c8bc-500a-4891-942a-2b06ec242f10" name="Default" comment="Revisión de los operadores + cambio en funcion heuristica">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Estado.java" afterPath="$PROJECT_DIR$/src/Estado.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FuncionHeuristica.java" afterPath="$PROJECT_DIR$/src/FuncionHeuristica.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" afterPath="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProblemaBicing.iws" />
@@ -66,31 +68,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FuncionHeuristica.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FuncionHeuristica.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Estaciones.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estaciones.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7777777">
-              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -99,77 +81,31 @@
       <file leaf-file-name="Estado.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Estado.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5923913">
-              <caret line="114" column="37" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2179#2180#0" expanded="true" />
-                <element signature="e#2203#2204#0" expanded="true" />
-                <element signature="e#2262#2263#0" expanded="true" />
-                <element signature="e#2285#2286#0" expanded="true" />
-                <element signature="e#2326#2327#0" expanded="true" />
-                <element signature="e#2359#2360#0" expanded="true" />
-                <element signature="e#2415#2416#0" expanded="true" />
-                <element signature="e#2459#2460#0" expanded="true" />
-                <element signature="e#2500#2501#0" expanded="true" />
-                <element signature="e#2533#2534#0" expanded="true" />
-                <element signature="e#2582#2583#0" expanded="true" />
-                <element signature="e#2614#2615#0" expanded="true" />
-                <element signature="e#3255#3256#0" expanded="true" />
-                <element signature="e#3318#3319#0" expanded="true" />
-                <element signature="e#4038#4039#0" expanded="true" />
-                <element signature="e#4065#4066#0" expanded="true" />
-                <element signature="e#4131#4132#0" expanded="true" />
-                <element signature="e#4161#4162#0" expanded="true" />
-                <element signature="e#4228#4229#0" expanded="true" />
-                <element signature="e#4280#4281#0" expanded="true" />
-                <element signature="e#5058#5059#0" expanded="true" />
-                <element signature="e#5087#5088#0" expanded="true" />
-                <element signature="e#5143#5144#0" expanded="true" />
-                <element signature="e#5179#5180#0" expanded="true" />
+                <element signature="e#5483#5484#0" expanded="true" />
+                <element signature="e#5512#5513#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EstacionID.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
+      <file leaf-file-name="FuncionSucesoraHillClimbing.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="e#689#690#0" expanded="true" />
-                <element signature="e#757#758#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Estacion.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estacion.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.444445">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Furgoneta.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Furgoneta.java">
+      <file leaf-file-name="FuncionHeuristicaC1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FuncionHeuristicaC1.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Furgonetas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -206,7 +142,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/EstacionID.java" />
+        <option value="$PROJECT_DIR$/src/Furgoneta.java" />
+        <option value="$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java" />
+        <option value="$PROJECT_DIR$/src/Furgonetas.java" />
+        <option value="$PROJECT_DIR$/src/FuncionHeuristicaC1.java" />
+        <option value="$PROJECT_DIR$/src/FuncionHeuristica.java" />
         <option value="$PROJECT_DIR$/src/Estado.java" />
       </list>
     </option>
@@ -226,26 +166,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Android</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
+    <option name="y" value="24" />
+    <option name="width" value="1024" />
+    <option name="height" value="552" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -270,6 +193,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -333,52 +259,9 @@
               <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bicing.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProblemaBicing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProblemaBicing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bicing.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bicing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProblemaBicing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProblemaBicing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -399,11 +282,119 @@
     <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Estado.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/EstacionID.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -515,7 +506,7 @@
           <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
           <option name="launcherType" value="OSDefault" />
           <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
         </LauncherParameters>
       </option>
       <option name="mobileRunTarget" value="Emulator" />
@@ -538,7 +529,7 @@
           <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
           <option name="launcherType" value="OSDefault" />
           <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
         </LauncherParameters>
       </option>
       <option name="moduleName" value="" />
@@ -657,8 +648,8 @@
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="/usr/java/jdk1.8.0_60/jre" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -692,9 +683,7 @@
       <workItem from="1444644124934" duration="188000" />
       <workItem from="1444664995022" duration="4734000" />
       <workItem from="1444669930356" duration="1367000" />
-      <workItem from="1444846706655" duration="225000" />
-      <workItem from="1444934045755" duration="2756000" />
-      <workItem from="1444936857154" duration="4929000" />
+      <workItem from="1444983276935" duration="6313000" />
     </task>
     <task id="LOCAL-00001" summary="Add controlador experimentos">
       <created>1444642449997</created>
@@ -702,29 +691,11 @@
       <option name="project" value="LOCAL" />
       <updated>1444642449997</updated>
     </task>
-    <task id="LOCAL-00002" summary="modificacion prueba">
-      <created>1444935685387</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1444935685387</updated>
-    </task>
-    <task id="LOCAL-00003" summary="modificacion prueba">
-      <created>1444937949788</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1444937949788</updated>
-    </task>
-    <task id="LOCAL-00004" summary="adaptacion sin estacionesID de estado">
-      <created>1444939529755</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1444939529755</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18437000" />
+    <option name="totallyTimeSpent" value="17979000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -747,22 +718,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="24" width="1024" height="552" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32805908" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3271028" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.50408995" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27742615" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27570093" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.49591002" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22604166" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22597137" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -793,9 +764,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="constructora estado" />
     <MESSAGE value="Add controlador experimentos" />
-    <MESSAGE value="modificacion prueba" />
-    <MESSAGE value="adaptacion sin estacionesID de estado" />
-    <option name="LAST_COMMIT_MESSAGE" value="adaptacion sin estacionesID de estado" />
+    <MESSAGE value="Revisión de los operadores + cambio en funcion heuristica" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revisión de los operadores + cambio en funcion heuristica" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -809,7 +779,7 @@
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -825,53 +795,11 @@
     <entry file="file://$PROJECT_DIR$/src/Estado.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
+          <caret line="86" column="33" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2203#2204#0" expanded="true" />
-            <element signature="e#2262#2263#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-            <element signature="e#2326#2327#0" expanded="true" />
-            <element signature="e#2359#2360#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2533#2534#0" expanded="true" />
-            <element signature="e#2582#2583#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3318#3319#0" expanded="true" />
-            <element signature="e#4038#4039#0" expanded="true" />
-            <element signature="e#4065#4066#0" expanded="true" />
-            <element signature="e#4131#4132#0" expanded="true" />
-            <element signature="e#4161#4162#0" expanded="true" />
-            <element signature="e#4228#4229#0" expanded="true" />
-            <element signature="e#4280#4281#0" expanded="true" />
-            <element signature="e#5058#5059#0" expanded="true" />
-            <element signature="e#5087#5088#0" expanded="true" />
-            <element signature="e#5143#5144#0" expanded="true" />
-            <element signature="e#5179#5180#0" expanded="true" />
+            <element signature="e#5483#5484#0" expanded="true" />
+            <element signature="e#5512#5513#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-          <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgoneta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,56 +832,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2203#2204#0" expanded="true" />
-            <element signature="e#2262#2263#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-            <element signature="e#2326#2327#0" expanded="true" />
-            <element signature="e#2359#2360#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2533#2534#0" expanded="true" />
-            <element signature="e#2582#2583#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3318#3319#0" expanded="true" />
-            <element signature="e#4038#4039#0" expanded="true" />
-            <element signature="e#4065#4066#0" expanded="true" />
-            <element signature="e#4131#4132#0" expanded="true" />
-            <element signature="e#4161#4162#0" expanded="true" />
-            <element signature="e#4228#4229#0" expanded="true" />
-            <element signature="e#4280#4281#0" expanded="true" />
-            <element signature="e#5058#5059#0" expanded="true" />
-            <element signature="e#5087#5088#0" expanded="true" />
-            <element signature="e#5143#5144#0" expanded="true" />
-            <element signature="e#5179#5180#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Experimentos/ControladorExperimentos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Experimentos/NombreExperimentos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-          <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#5483#5484#0" expanded="true" />
+            <element signature="e#5512#5513#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -970,92 +850,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estado.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2203#2204#0" expanded="true" />
-            <element signature="e#2262#2263#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-            <element signature="e#2326#2327#0" expanded="true" />
-            <element signature="e#2359#2360#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2533#2534#0" expanded="true" />
-            <element signature="e#2582#2583#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3318#3319#0" expanded="true" />
-            <element signature="e#4038#4039#0" expanded="true" />
-            <element signature="e#4065#4066#0" expanded="true" />
-            <element signature="e#4131#4132#0" expanded="true" />
-            <element signature="e#4161#4162#0" expanded="true" />
-            <element signature="e#4228#4229#0" expanded="true" />
-            <element signature="e#4280#4281#0" expanded="true" />
-            <element signature="e#5058#5059#0" expanded="true" />
-            <element signature="e#5087#5088#0" expanded="true" />
-            <element signature="e#5143#5144#0" expanded="true" />
-            <element signature="e#5179#5180#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="false" />
+            <element signature="e#797#798#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
-          <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgoneta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,6 +866,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Experimentos/NombreExperimentos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Experimentos/ControladorExperimentos.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1088,6 +900,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estaciones.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/AIMA.jar!/aima/search/framework/Successor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1095,64 +914,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristicaC1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6467391">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Experimentos/ControladorExperimentos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.073913045">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Experimentos/NombreExperimentos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.036956523">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estacion.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.110246435">
+          <caret line="6" column="13" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Furgonetas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42857143">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1160,157 +940,45 @@
     <entry file="file://$PROJECT_DIR$/src/FuncionHeuristica.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/Bicing.jar!/IA/Bicing/Estaciones.class">
+    <entry file="file://$PROJECT_DIR$/src/FuncionHeuristicaC1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7777777">
-          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Furgoneta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        <state vertical-scroll-proportion="1.3953488">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EstacionID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Estado.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5923913">
-          <caret line="114" column="37" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2203#2204#0" expanded="true" />
-            <element signature="e#2262#2263#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-            <element signature="e#2326#2327#0" expanded="true" />
-            <element signature="e#2359#2360#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2533#2534#0" expanded="true" />
-            <element signature="e#2582#2583#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3318#3319#0" expanded="true" />
-            <element signature="e#4038#4039#0" expanded="true" />
-            <element signature="e#4065#4066#0" expanded="true" />
-            <element signature="e#4131#4132#0" expanded="true" />
-            <element signature="e#4161#4162#0" expanded="true" />
-            <element signature="e#4228#4229#0" expanded="true" />
-            <element signature="e#4280#4281#0" expanded="true" />
-            <element signature="e#5058#5059#0" expanded="true" />
-            <element signature="e#5087#5088#0" expanded="true" />
-            <element signature="e#5143#5144#0" expanded="true" />
-            <element signature="e#5179#5180#0" expanded="true" />
+            <element signature="e#5483#5484#0" expanded="true" />
+            <element signature="e#5512#5513#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>ProblemaBicing</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>AIMA</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
