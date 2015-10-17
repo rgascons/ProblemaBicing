@@ -21,12 +21,12 @@ public class Estado {
     public Estado(int nf, Estaciones est) {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
-        bicisE = new ArrayList<>();
+        this.bicisE = new ArrayList<>();
         m = new HashMap<>();
         for (int i = 0; i < estaciones.size(); ++i) {
             m.put(estaciones.get(i), i);
+            bicisE.add(0);
         }
-        bicisE.addAll(m.values());
 
         for (Furgoneta f : this.furgonetas)
         {
@@ -36,7 +36,7 @@ public class Estado {
                 int index = m.get(e1);
                 Integer bic = this.bicisE.get(index);
                 Integer llev = f.getBicisPrimeraEstacion();
-                bic = (bic == null) ? llev : bic + llev;
+                bic += llev;
                 this.bicisE.set(index, bic);
             }
 
@@ -46,7 +46,7 @@ public class Estado {
                 int i2 = m.get(e2);
                 Integer bic2 = this.bicisE.get(i2);
                 Integer llev2 = f.getBicisEstacionOrigen()-f.getBicisPrimeraEstacion();
-                bic2 = (bic2 == null)? llev2 : bic2+llev2;
+                bic2 += llev2;
                 this.bicisE.set(i2,bic2);
             }
         }
@@ -118,8 +118,29 @@ public class Estado {
     }
 
     public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
-        if (f.getPrimerDestino().equals(vieja)) f.setPrimerDestino(nueva);
-        else f.setSegundoDestino(nueva);
+        if (f.getPrimerDestino().equals(vieja))
+        {
+            f.setPrimerDestino(nueva);
+            int idv = m.get(vieja);
+            int idn = m.get(nueva);
+            int biv = bicisE.get(idv);
+            int bin = bicisE.get(idn);
+            int llev = f.getBicisPrimeraEstacion();
+            bicisE.set(idv, biv-llev);
+            bicisE.set(idn, bin+llev);
+        }
+        else
+        {
+            f.setSegundoDestino(nueva);
+            int idv = m.get(vieja);
+            int idn = m.get(nueva);
+            int biv = bicisE.get(idv);
+            int bin = bicisE.get(idn);
+            int llev = f.getBicisEstacionOrigen()-f.getBicisPrimeraEstacion();
+            bicisE.set(idv, biv-llev);
+            bicisE.set(idn, bin+llev);
+        }
+
     }
 
     public boolean puedeDejarBicis(Furgoneta f, int n) {

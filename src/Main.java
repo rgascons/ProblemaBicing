@@ -11,14 +11,16 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            Estaciones estaciones = new Estaciones(20, 60, 0, (int)System.currentTimeMillis());
-            Estado estado = new Estado(15, estaciones);
+            Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
+            Estado estado = new Estado(5, estaciones);
             System.out.println("Hello World!");
-            Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristica());
+            Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
             Search search = new HillClimbingSearch();
-                SearchAgent agent = new SearchAgent(problem, search);
-                printActions(agent.getActions());
-                printInstrumentation(agent.getInstrumentation());
+            SearchAgent agent = new SearchAgent(problem, search);
+            System.out.print("Acciones\n");
+            printActions(agent.getActions());
+            System.out.print("Instrumentación\n");
+            printInstrumentation(agent.getInstrumentation());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -35,9 +35,17 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
         }
     }
 
+    public Furgonetas(int nfurg, int nest, Estaciones estaciones)
+    {
+        this.nfurg = nfurg;
+        this.nest = nest;
+        this.estaciones = estaciones;
+    }
+
     @Override
     public Furgonetas clone() {
-        Furgonetas nF = new Furgonetas(nfurg, nest, seed, estaciones);
+        super.clone();
+        Furgonetas nF = new Furgonetas(nfurg, nest, estaciones);
         for (Furgoneta f : this) {
             nF.add(f.clone());
         }
