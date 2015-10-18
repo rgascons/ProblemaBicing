@@ -23,13 +23,16 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
             if (e.getDemanda() >= e.getNumBicicletasNext())
             {
                 if (e.getDemanda() >= e.getNumBicicletasNext() + bicis_llevadas)
-                    eur = (e.getNumBicicletasNext() + bicis_llevadas) - e.getDemanda();
-                else eur = (e.getNumBicicletasNext() + bicis_llevadas) - e.getDemanda();
+                    eur = bicis_llevadas;
+                else eur = e.getDemanda()-(e.getNumBicicletasNext() + bicis_llevadas);
+            }
+            else
+            {
+                if (e.getNumBicicletasNext()+bicis_llevadas > e.getDemanda()) eur = -bicis_llevadas;
             }
 
             sum_acord += eur;
         }
-
-        return -sum_acord;
+        return sum_acord;
     }
 }
