@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcb9c8bc-500a-4891-942a-2b06ec242f10" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java" afterPath="$PROJECT_DIR$/src/FuncionSucesoraHillClimbing.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Furgonetas.java" afterPath="$PROJECT_DIR$/src/Furgonetas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProblemaBicing.iws" />
@@ -619,7 +616,7 @@
       <workItem from="1444644124934" duration="188000" />
       <workItem from="1444664995022" duration="4734000" />
       <workItem from="1444669930356" duration="1367000" />
-      <workItem from="1445186122119" duration="13117000" />
+      <workItem from="1445186122119" duration="13224000" />
     </task>
     <task id="LOCAL-00001" summary="Add controlador experimentos">
       <created>1444642449997</created>
@@ -669,11 +666,17 @@
       <option name="project" value="LOCAL" />
       <updated>1445199660474</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="generador random furgonetas genera estaciones origen primer destino y segundo destino diferentes">
+      <created>1445203564369</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1445203564369</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23644000" />
+    <option name="totallyTimeSpent" value="23751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -731,7 +734,8 @@
     <MESSAGE value="Error: Sustitución por si mismo" />
     <MESSAGE value="Actions debug" />
     <MESSAGE value="constructora de estado con la semilla del random" />
-    <option name="LAST_COMMIT_MESSAGE" value="constructora de estado con la semilla del random" />
+    <MESSAGE value="generador random furgonetas genera estaciones origen primer destino y segundo destino diferentes" />
+    <option name="LAST_COMMIT_MESSAGE" value="generador random furgonetas genera estaciones origen primer destino y segundo destino diferentes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
