@@ -41,14 +41,18 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                 }
             }
             if (estado.puedeDejarBicis(f, f.getBicisPrimeraEstacion())) {
-                Estado nuevoEstado = new Estado(estado);
-                nuevoEstado.dejarBicis(f, f.getBicisPrimeraEstacion());
-                retVal.add(new Successor(Estado.DEJAR_BICIS, nuevoEstado));
+                for (int j = 1; j <= 29; ++j) {
+                    Estado nuevoEstado = new Estado(estado);
+                    nuevoEstado.dejarBicis(f, f.getBicisPrimeraEstacion());
+                    retVal.add(new Successor(Estado.DEJAR_BICIS + " #" + j + "#", nuevoEstado));
+                }
             }
             if (estado.puedeRecogerBicis(f, f.getBicisEstacionOrigen())) {
-                Estado nuevoEstado = new Estado(estado);
-                nuevoEstado.recogerBicis(f, f.getBicisEstacionOrigen());
-                retVal.add(new Successor(Estado.RECOGER_BICIS, nuevoEstado));
+                for (int j = 1; j <= 29; ++j) {
+                    Estado nuevoEstado = new Estado(estado);
+                    nuevoEstado.recogerBicis(f, f.getBicisEstacionOrigen());
+                    retVal.add(new Successor(Estado.RECOGER_BICIS, nuevoEstado));
+                }
             }
             ++i;
         }

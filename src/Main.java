@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
-            Estado estado = new Estado(5, estaciones);
+            Estado estado = new Estado(5, estaciones, 1234);
             System.out.println("Hello World!");
             Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
             Search search = new HillClimbingSearch();
@@ -38,12 +38,10 @@ public class Main {
     }
 
     private static void printInstrumentation(Properties properties) {
-
         for (Object o : properties.keySet()) {
             String key = (String) o;
             String property = properties.getProperty(key);
             System.out.println(key + " : " + property);
         }
-
     }
 }

@@ -18,9 +18,9 @@ public class Estado {
     public static String CAMBIAR_ESTACION_ORIGEN = "cambiar_estacion_origen";
     public static String QUITAR_ESTACION = "quitar_estacion";
 
-    public Estado(int nf, Estaciones est) {
+    public Estado(int nf, Estaciones est, long seed) {
         estaciones = est;
-        furgonetas = new Furgonetas(nf, estaciones.size(), System.currentTimeMillis(), estaciones);
+        furgonetas = new Furgonetas(nf, estaciones.size(), seed, estaciones);
         this.bicisE = new ArrayList<>();
         m = new HashMap<>();
         for (int i = 0; i < estaciones.size(); ++i) {
@@ -121,7 +121,7 @@ public class Estado {
     public void setbicisE(ArrayList<Integer> bicisE) {this.bicisE = bicisE;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
-        return vieja != null && nueva != null && !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
+        return noNulo(vieja) && noNulo(nueva) && !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
     }
 
     public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
@@ -192,7 +192,7 @@ public class Estado {
     }
 
     public boolean puedeQuitarEstacion(Estacion e, Furgoneta f) {
-        return existeEstacionFurgoneta(e, f);
+        return coincideEstacionDestino(e, f);
     }
 
     public void quitarEstacion(Estacion e, Furgoneta f) {
@@ -205,12 +205,12 @@ public class Estado {
                 f.setSegundoDestino(null);
                 f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
             }
-            /*else {
+            else {
                 f.setPrimerDestino(null);
                 f.setBicisPrimeraEstacion(0);
                 f.setOrigen(null);
                 f.setBicisEstacionOrigen(0);
-            }*/
+            }
         }
         else {
             int i = m.get(f.getSegundoDestino());
@@ -220,10 +220,6 @@ public class Estado {
         }
     }
 
-    private boolean existeEstacionFurgoneta(Estacion e, Furgoneta f) {
-        return (noNulo(f.getPrimerDestino()) && f.getPrimerDestino().equals(e)) ||
-        (noNulo(f.getSegundoDestino()) && f.getSegundoDestino().equals(e));
-    }
 
     private boolean coincideEstacionDestino(Estacion e, Furgoneta f) {
         return (noNulo(f.getPrimerDestino()) && f.getPrimerDestino().equals(e)) || (noNulo(f.getSegundoDestino()) && f.getSegundoDestino().equals(e));

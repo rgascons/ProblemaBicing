@@ -21,7 +21,6 @@ public class ControladorExperimentos {
             default:
                 System.out.println("Esto no es un experimento. Cerrando el programa...");
                 break;
-
         }
     }
 }
