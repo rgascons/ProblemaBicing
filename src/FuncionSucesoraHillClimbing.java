@@ -56,6 +56,7 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
             }
             ++i;
         }
+        System.out.println("Genero " + retVal.size() + " estados sucesores");
         return retVal;
     }
 }
