@@ -15,7 +15,7 @@ public class Estado {
     public static String SUSTITUIR_ESTACION = "sustituir_estacion";
     public static String DEJAR_BICIS = "dejar_bicis";
     public static String RECOGER_BICIS = "recoger_bicis";
-    public static String CAMBIAR_ESTACION_ORIGIEN = "cambiar_estacion_origen";
+    public static String CAMBIAR_ESTACION_ORIGEN = "cambiar_estacion_origen";
     public static String QUITAR_ESTACION = "quitar_estacion";
 
     public Estado(int nf, Estaciones est) {
@@ -121,7 +121,7 @@ public class Estado {
     public void setbicisE(ArrayList<Integer> bicisE) {this.bicisE = bicisE;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
-        return vieja != null && nueva != null &&!nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
+        return vieja != null && nueva != null && !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
     }
 
     public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
@@ -173,13 +173,18 @@ public class Estado {
     }
 
     public void recogerBicis(Furgoneta f, int n) {
+        int oldn = f.getBicisEstacionOrigen();
         f.setBicisEstacionOrigen(n);
         int i = m.get(f.getOrigen());
-        bicisE.set(i, bicisE.get(i) - n);
+        int bic = bicisE.get(i);
+        bic = (bic+oldn)-n;
+        bicisE.set(i, bic);
+
+        if (f.getBicisPrimeraEstacion() > n) f.setBicisPrimeraEstacion(n);
     }
 
     public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
-        return true;
+        return !e.equals(f.getPrimerDestino()) || !e.equals(f.getSegundoDestino());
     }
 
     public void cambiarEstacionOrigen(Estacion e, Furgoneta f) {

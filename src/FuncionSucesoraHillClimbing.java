@@ -21,22 +21,22 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                     if (estado.puedeCambiarEstacionOrigen(e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.cambiarEstacionOrigen(e, f);
-                        retVal.add(new Successor(Estado.CAMBIAR_ESTACION_ORIGIEN, nuevoEstado));
+                        retVal.add(new Successor(Estado.CAMBIAR_ESTACION_ORIGEN+" -> "+Estado.getM().get(e), nuevoEstado));
                     }
                     if (estado.puedeSustituirEstacion(f.getPrimerDestino(), e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.sustituirEstacion(f.getPrimerDestino(), e, f);
-                        retVal.add(new Successor(Estado.SUSTITUIR_ESTACION, nuevoEstado));
+                        retVal.add(new Successor(Estado.SUSTITUIR_ESTACION+" "+Estado.getM().get(f.getPrimerDestino())+" 1-> "+Estado.getM().get(e), nuevoEstado));
                     }
                     if (estado.puedeSustituirEstacion(f.getSegundoDestino(), e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.sustituirEstacion(f.getSegundoDestino(), e, f);
-                        retVal.add(new Successor(Estado.SUSTITUIR_ESTACION, nuevoEstado));
+                        retVal.add(new Successor(Estado.SUSTITUIR_ESTACION+" "+Estado.getM().get(f.getSegundoDestino())+" 2-> "+Estado.getM().get(e), nuevoEstado));
                     }
                     if (estado.puedeQuitarEstacion(e, f)) {
                         Estado nuevoEstado = new Estado(estado);
                         nuevoEstado.quitarEstacion(e, f);
-                        retVal.add(new Successor(Estado.QUITAR_ESTACION, nuevoEstado));
+                        retVal.add(new Successor(Estado.QUITAR_ESTACION+" ## "+Estado.getM().get(e), nuevoEstado));
                     }
                 }
             }
