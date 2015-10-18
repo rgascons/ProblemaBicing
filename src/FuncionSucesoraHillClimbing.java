@@ -12,6 +12,7 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
     public List getSuccessors(Object aState) {
         ArrayList retVal = new ArrayList();
         Estado estado = (Estado) aState;
+        System.out.print(Estado.getM().get(estado.getFurgonetas().get(0).getOrigen())+"->"+Estado.getM().get(estado.getFurgonetas().get(0).getPrimerDestino()));
         Furgonetas furgonetas = estado.getFurgonetas();
         Estaciones estaciones = estado.getEstaciones();
         int i = 0;
