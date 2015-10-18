@@ -30,12 +30,22 @@ public class Estado {
 
         for (Furgoneta f : this.furgonetas)
         {
+            Estacion o = f.getOrigen();
+            if(o != null)
+            {
+                int io = m.get(o);
+                int bic = bicisE.get(io);
+                int rec = f.getBicisEstacionOrigen();
+                bic -= rec;
+                bicisE.set(io, bic);
+            }
+
             Estacion e1 = f.getPrimerDestino();
             if(e1 != null)
             {
                 int index = m.get(e1);
-                Integer bic = this.bicisE.get(index);
-                Integer llev = f.getBicisPrimeraEstacion();
+                int bic = this.bicisE.get(index);
+                int llev = f.getBicisPrimeraEstacion();
                 bic += llev;
                 this.bicisE.set(index, bic);
             }
@@ -56,11 +66,8 @@ public class Estado {
         //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         estaciones = estado.getEstaciones();
-        this.bicisE = new ArrayList<>();
-        for (Integer i : estado.getBicisE()) {
-            this.bicisE.add(i);
-        }
-        for (Furgoneta f : this.furgonetas)
+        this.bicisE = new ArrayList<>(estado.getBicisE());
+        /*for (Furgoneta f : this.furgonetas)
         {
             Estacion e1 = f.getPrimerDestino();
             if(e1 != null)
@@ -81,7 +88,7 @@ public class Estado {
                 bic2 = (bic2 == null)? llev2 : bic2+llev2;
                 this.bicisE.set(i2,bic2);
             }
-        }
+        }*/
 
     }
 
@@ -148,9 +155,10 @@ public class Estado {
     }
 
     public void dejarBicis(Furgoneta f, int n) {
+        int oldn = f.getBicisPrimeraEstacion();
         f.setBicisPrimeraEstacion(n);
         int ip = m.get(f.getPrimerDestino());
-        int bp = bicisE.get(ip) + n;
+        int bp = bicisE.get(ip)-(oldn-n);
         bicisE.set(ip, bp);
         if (noNulo(f.getSegundoDestino())) {
             int is = m.get(f.getSegundoDestino());

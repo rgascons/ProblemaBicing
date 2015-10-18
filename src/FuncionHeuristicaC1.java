@@ -33,6 +33,7 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
 
             sum_acord += eur;
         }
-        return sum_acord;
+        System.out.print(sum_acord+"\n");
+        return -sum_acord;
     }
 }

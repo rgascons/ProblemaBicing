@@ -24,15 +24,25 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
             int idEstOrigen = myRandom.nextInt(nest);
             int idPrimDestino = myRandom.nextInt(nest);
             int idSegDestino = myRandom.nextInt(nest);
+            int bicisOrigen = estaciones.get(idEstOrigen).getNumBicicletasNoUsadas();
+            int bicisfurg = (bicisOrigen >= 30)? 30: bicisOrigen;
+            int bicis1est;
+            int delta = estaciones.get(idPrimDestino).getDemanda() - estaciones.get(idPrimDestino).getNumBicicletasNext();
+            if (delta > 0)
+                bicis1est = (bicisfurg >= delta)? delta: bicisfurg;
+            else {
+                bicis1est = 0;
+            }
             f = new Furgoneta(
                     estaciones.get(idEstOrigen),
                     estaciones.get(idPrimDestino),
                     estaciones.get(idSegDestino),
-                    estaciones.get(idPrimDestino).getNumBicicletasNoUsadas(),
-                    estaciones.get(idPrimDestino).getNumBicicletasNoUsadas()
-                    );
+                    bicisfurg,
+                    bicis1est
+            );
             this.add(f);
         }
+
     }
 
     public Furgonetas(int nfurg, int nest, Estaciones estaciones)
