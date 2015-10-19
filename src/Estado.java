@@ -36,8 +36,13 @@ public class Estado {
                 int io = m.get(o);
                 int bic = bicisE.get(io);
                 int rec = f.getBicisEstacionOrigen();
-                bic -= rec;
-                bicisE.set(io, bic);
+                if ((o.getNumBicicletasNoUsadas()+bic)-rec < 0)
+                {
+                    rec = 0;
+                    f.setBicisEstacionOrigen(0);
+                    f.setBicisPrimeraEstacion(0);
+                }
+                bicisE.set(io, bic-rec);
             }
 
             Estacion e1 = f.getPrimerDestino();
@@ -188,7 +193,21 @@ public class Estado {
     }
 
     public void cambiarEstacionOrigen(Estacion e, Furgoneta f) {
+        int olde = getM().get(f.getOrigen());
+        int oldbic = bicisE.get(olde);
+        int oldrec = f.getBicisEstacionOrigen();
+        bicisE.set(olde,oldbic+oldrec);
         f.setOrigen(e);
+        int ide= getM().get(e);
+        //System.out.print("Cambiar origen por "+ide+"\n");
+        int bic= bicisE.get(ide);
+        int disp = e.getNumBicicletasNoUsadas()+bic;
+        int rec = 0;
+        if (disp > 0 )
+        {
+          rec = (disp > 30)? 30:disp;
+        }
+        bicisE.set(ide,bic-rec);
         //TO DO:
     }
 
