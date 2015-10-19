@@ -189,25 +189,44 @@ public class Estado {
     }
 
     public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
-        return !e.equals(f.getPrimerDestino()) || !e.equals(f.getSegundoDestino());
+        return bicisE.get(m.get(e))>=0 &&(!e.equals(f.getPrimerDestino()) || !e.equals(f.getSegundoDestino()));
     }
 
     public void cambiarEstacionOrigen(Estacion e, Furgoneta f) {
         int olde = getM().get(f.getOrigen());
         int oldbic = bicisE.get(olde);
         int oldrec = f.getBicisEstacionOrigen();
+        int old1 = f.getBicisPrimeraEstacion();
+        int old2 = f.getBicisSegundaEstacion();
         bicisE.set(olde,oldbic+oldrec);
         f.setOrigen(e);
         int ide= getM().get(e);
         //System.out.print("Cambiar origen por "+ide+"\n");
         int bic= bicisE.get(ide);
         int disp = e.getNumBicicletasNoUsadas()+bic;
+        //if (e.getNumBicicletasNext()-disp < e.getDemanda()) disp = e.getNumBicicletasNext()-e.getDemanda();
         int rec = 0;
         if (disp > 0 )
         {
           rec = (disp > 30)? 30:disp;
         }
         bicisE.set(ide,bic-rec);
+        f.setBicisEstacionOrigen(rec);
+
+        if (old1 > rec)
+        {
+            int i1d = m.get(f.getPrimerDestino());
+            int ob = bicisE.get(i1d);
+            bicisE.set(i1d, ob -(old1-rec));
+            f.setBicisPrimeraEstacion(rec);
+        }
+
+        if (f.getSegundoDestino() != null)
+        {
+            int ob2 = bicisE.get(m.get(f.getSegundoDestino()));
+            bicisE.set(m.get(f.getSegundoDestino()), ob2-old2+f.getBicisSegundaEstacion());
+        }
+
         //TO DO:
     }
 

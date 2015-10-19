@@ -56,6 +56,10 @@ public class Furgoneta implements Cloneable {
         this.bicisPrimeraEstacion = bicisPrimeraEstacion;
     }
 
+    public int getBicisSegundaEstacion() {
+        return bicisEstacionOrigen-bicisPrimeraEstacion;
+    }
+
     public void writeFrurgoneta() {
         if (origen != null) System.out.println("Mi estacion de origen es la " + Estado.getM().get(origen));
         if (primerDestino != null) System.out.println("Mi primer destino es " + Estado.getM().get(primerDestino));

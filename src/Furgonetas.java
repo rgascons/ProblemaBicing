@@ -16,12 +16,17 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
         this.nest = nest;
         this.seed = seed;
         this.estaciones = estaciones;
-
+        boolean orig[] = new boolean[estaciones.size()];
         Random myRandom = new Random(seed);
 
         Furgoneta f;
         for (int i = 0; i < nfurg; ++i) {
-            int idEstOrigen = myRandom.nextInt(nest);
+            int idEstOrigen;
+            do {
+                idEstOrigen = myRandom.nextInt(nest);
+            }
+            while (orig[idEstOrigen]);
+            orig[idEstOrigen] = true;
             int idPrimDestino;
             do {
                 idPrimDestino = myRandom.nextInt(nest);
