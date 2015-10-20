@@ -9,6 +9,7 @@ public class Estado {
     private Furgonetas furgonetas;
     private static Estaciones estaciones;
     private ArrayList<Integer> bicisE;
+    private ArrayList<Boolean> ini;
     private static Map<Estacion, Integer> m;
 
 
@@ -22,10 +23,12 @@ public class Estado {
         estaciones = est;
         furgonetas = new Furgonetas(nf, estaciones.size(), seed, estaciones);
         this.bicisE = new ArrayList<>();
+        this.ini = new ArrayList<>();
         m = new HashMap<>();
         for (int i = 0; i < estaciones.size(); ++i) {
             m.put(estaciones.get(i), i);
             bicisE.add(0);
+            ini.add(false);
         }
 
         for (Furgoneta f : this.furgonetas)
@@ -35,6 +38,7 @@ public class Estado {
             {
                 int io = m.get(o);
                 int bic = bicisE.get(io);
+                ini.set(io,true);
                 int rec = f.getBicisEstacionOrigen();
                 if ((o.getNumBicicletasNoUsadas()+bic)-rec < 0)
                 {
@@ -72,6 +76,7 @@ public class Estado {
         this.furgonetas = estado.furgonetas.clone();
         estaciones = estado.getEstaciones();
         this.bicisE = new ArrayList<>(estado.getBicisE());
+        this.ini = new ArrayList<>(estado.ini);
         /*for (Furgoneta f : this.furgonetas)
         {
             Estacion e1 = f.getPrimerDestino();
@@ -189,7 +194,7 @@ public class Estado {
     }
 
     public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
-        return bicisE.get(m.get(e))>=0 &&(!e.equals(f.getPrimerDestino()) || !e.equals(f.getSegundoDestino()));
+        return !ini.get(m.get(e)) &&(!e.equals(f.getPrimerDestino()) && !e.equals(f.getSegundoDestino()));
     }
 
     public void cambiarEstacionOrigen(Estacion e, Furgoneta f) {
@@ -198,13 +203,15 @@ public class Estado {
         int oldrec = f.getBicisEstacionOrigen();
         int old1 = f.getBicisPrimeraEstacion();
         int old2 = f.getBicisSegundaEstacion();
+        ini.set(olde, false);
         bicisE.set(olde,oldbic+oldrec);
         f.setOrigen(e);
         int ide= getM().get(e);
+        ini.set(ide, true);
         //System.out.print("Cambiar origen por "+ide+"\n");
         int bic= bicisE.get(ide);
         int disp = e.getNumBicicletasNoUsadas()+bic;
-        //if (e.getNumBicicletasNext()-disp < e.getDemanda()) disp = e.getNumBicicletasNext()-e.getDemanda();
+        if (e.getNumBicicletasNext()-disp < e.getDemanda()) disp = e.getNumBicicletasNext()-e.getDemanda();
         int rec = 0;
         if (disp > 0 )
         {

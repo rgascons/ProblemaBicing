@@ -1,3 +1,4 @@
+import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 
 import java.util.ArrayList;
@@ -37,7 +38,9 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
                 idSegDestino = myRandom.nextInt(nest);
             }
             while (idSegDestino == idEstOrigen || idSegDestino == idPrimDestino);
-            int bicisOrigen = estaciones.get(idEstOrigen).getNumBicicletasNoUsadas();
+            Estacion origen = estaciones.get(idEstOrigen);
+            int bicisOrigen = origen.getNumBicicletasNoUsadas();
+            //if (origen.getNumBicicletasNext()-bicisOrigen < origen.getDemanda()) bicisOrigen = origen.getNumBicicletasNext()-origen.getDemanda();
             int bicisfurg = (bicisOrigen >= 30)? 30: bicisOrigen;
             int bicis1est;
             int delta = estaciones.get(idPrimDestino).getDemanda() - estaciones.get(idPrimDestino).getNumBicicletasNext();

@@ -17,7 +17,7 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
         System.out.print("-----\n");
         for (int i =0; i < furgonetas.size(); ++i)
             System.out.print(Estado.getM().get(furgonetas.get(i).getOrigen())+"->"+Estado.getM().get(furgonetas.get(i).getPrimerDestino())+"->"+Estado.getM().get(furgonetas.get(i).getSegundoDestino())+"\n");
-
+        System.out.print("-----\n");
         for (int i = 0 ; i < furgonetas.size();++i) {
             Furgoneta f = furgonetas.get(i);
             for (int j = 0; j < estaciones.size(); ++j) {
@@ -28,7 +28,7 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                         Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
                         Estacion nove = nuevoEstado.getEstaciones().get(j);
                         nuevoEstado.cambiarEstacionOrigen(nove, neo);
-                        retVal.add(new Successor(Estado.CAMBIAR_ESTACION_ORIGEN+" #"+i+"# -> "+nuevoEstado.getM().get(nove), nuevoEstado));
+                        retVal.add(new Successor(Estado.CAMBIAR_ESTACION_ORIGEN+" #"+i+"# -> "+ Estado.getM().get(nove), nuevoEstado));
                     }
                     if (estado.puedeSustituirEstacion(f.getPrimerDestino(), e, f)) {
                         Estado nuevoEstado = new Estado(estado);
