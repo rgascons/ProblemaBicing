@@ -13,6 +13,7 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
     {
         Estado state = (Estado) n;
         double sum_acord = 0;
+        double bicistotal = 0;
         ArrayList<Estacion> est = state.getEstaciones();
         for (int i = 0; i < est.size(); ++i)
         {
@@ -31,8 +32,9 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
                 else eur = (e.getNumBicicletasNext()+bicis_llevadas) - e.getDemanda();
             }
             sum_acord += eur;
+            bicistotal += bicis_llevadas+e.getNumBicicletasNext();
         }
-        System.out.print(sum_acord+"\n");
+        System.out.print(sum_acord+" ("+bicistotal+")\n");
         return -sum_acord;
     }
 }

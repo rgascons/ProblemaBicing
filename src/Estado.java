@@ -166,13 +166,14 @@ public class Estado {
 
     public void dejarBicis(Furgoneta f, int n) {
         int oldn = f.getBicisPrimeraEstacion();
+        int old2 = f.getBicisSegundaEstacion();
         f.setBicisPrimeraEstacion(n);
         int ip = m.get(f.getPrimerDestino());
         int bp = bicisE.get(ip)-(oldn-n);
         bicisE.set(ip, bp);
         if (noNulo(f.getSegundoDestino())) {
             int is = m.get(f.getSegundoDestino());
-            int bs = f.getBicisEstacionOrigen() - bp;
+            int bs = bicisE.get(is) -(old2-f.getBicisSegundaEstacion());
             bicisE.set(is, bs);
         }
     }
@@ -184,13 +185,27 @@ public class Estado {
 
     public void recogerBicis(Furgoneta f, int n) {
         int oldn = f.getBicisEstacionOrigen();
+        int old1 = f.getBicisPrimeraEstacion();
+        int old2 = f.getBicisSegundaEstacion();
         f.setBicisEstacionOrigen(n);
         int i = m.get(f.getOrigen());
         int bic = bicisE.get(i);
         bic = (bic+oldn)-n;
         bicisE.set(i, bic);
 
-        if (f.getBicisPrimeraEstacion() > n) f.setBicisPrimeraEstacion(n);
+        if (f.getBicisPrimeraEstacion() > n)
+        {
+            f.setBicisPrimeraEstacion(n);
+            int ob = bicisE.get(m.get(f.getPrimerDestino()));
+            bicisE.set(m.get(f.getPrimerDestino()), (ob-old1)+n);
+        }
+
+        if (f.getSegundoDestino() != null)
+        {
+            int j = m.get(f.getSegundoDestino());
+            int oldb = bicisE.get(j);
+            bicisE.set(j, oldb-(old2+f.getBicisSegundaEstacion()));
+        }
     }
 
     public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
@@ -247,9 +262,13 @@ public class Estado {
             bicisE.set(i, bicisE.get(i) - f.getBicisPrimeraEstacion());
             if (f.getSegundoDestino() != null)
             {
+                int old2 = f.getBicisSegundaEstacion();
                 f.setPrimerDestino(f.getSegundoDestino());
                 f.setSegundoDestino(null);
                 f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
+                Estacion n1 = f.getPrimerDestino(); //antes conocido como SegundoDestino
+                int ob = bicisE.get(m.get(n1));
+                bicisE.set(m.get(n1), (ob-old2)+f.getBicisPrimeraEstacion());
             }
             else {
                 f.setPrimerDestino(null);
@@ -259,10 +278,13 @@ public class Estado {
             }
         }
         else {
-            int i = m.get(f.getSegundoDestino());
-            bicisE.set(i, bicisE.get(i) - (f.getBicisEstacionOrigen() - f.getBicisPrimeraEstacion()));
+            int j = m.get(f.getSegundoDestino());
+            bicisE.set(j, bicisE.get(j) - f.getBicisSegundaEstacion());
             f.setSegundoDestino(null);
+            int ob = bicisE.get(m.get(f.getPrimerDestino()));
+            int old1 = f.getBicisPrimeraEstacion();
             f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
+            bicisE.set(m.get(f.getPrimerDestino()), ob -(old1-f.getBicisEstacionOrigen()));
         }
     }
 
