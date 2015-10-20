@@ -161,7 +161,7 @@ public class Estado {
     }
 
     public boolean puedeDejarBicis(Furgoneta f, int n) {
-        return n > 0 && n <= f.getBicisEstacionOrigen() && noNulo(f.getPrimerDestino());
+        return n >= 0 && n <= f.getBicisEstacionOrigen() && noNulo(f.getPrimerDestino());
     }
 
     public void dejarBicis(Furgoneta f, int n) {
@@ -179,8 +179,7 @@ public class Estado {
     }
 
     public boolean puedeRecogerBicis(Furgoneta f, int n) {
-        return n >= 0 && n <= 30 &&
-                noNulo(f.getOrigen());
+        return n <= f.getOrigen().getNumBicicletasNoUsadas() && n >= 0 && n <= 30;
     }
 
     public void recogerBicis(Furgoneta f, int n) {
@@ -195,8 +194,9 @@ public class Estado {
 
         if (f.getBicisPrimeraEstacion() > n)
         {
+            int k = m.get(f.getPrimerDestino());
             f.setBicisPrimeraEstacion(n);
-            int ob = bicisE.get(m.get(f.getPrimerDestino()));
+            int ob = bicisE.get(k);
             bicisE.set(m.get(f.getPrimerDestino()), (ob-old1)+n);
         }
 
@@ -204,7 +204,8 @@ public class Estado {
         {
             int j = m.get(f.getSegundoDestino());
             int oldb = bicisE.get(j);
-            bicisE.set(j, oldb-(old2+f.getBicisSegundaEstacion()));
+            int nowbicfurg = f.getBicisSegundaEstacion();
+            bicisE.set(j, (oldb-old2)+nowbicfurg);
         }
     }
 
