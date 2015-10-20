@@ -61,6 +61,7 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                     nuevoEstado.dejarBicis(neo, j);
                     retVal.add(new Successor(Estado.DEJAR_BICIS + " [[" + j + "]]", nuevoEstado));
                 }
+
             }
 
             for (int j = 1; j <= 29; ++j) {
