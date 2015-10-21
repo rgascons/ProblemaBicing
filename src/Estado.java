@@ -23,6 +23,14 @@ public class Estado {
 
     public Estado(int indice, int nf, Estaciones est, long seed) {
         estaciones = est;
+        this.bicisE = new ArrayList<>();
+        this.ini = new ArrayList<>();
+        m = new HashMap<>();
+        for (int i = 0; i < estaciones.size(); ++i) {
+            m.put(estaciones.get(i), i);
+            bicisE.add(0);
+            ini.add(false);
+        }
         switch (indice) {
             case 1:
                 generadorEstadoInicial1(nf, seed);
@@ -95,7 +103,7 @@ public class Estado {
 
     private void generadorEstadoInicial2(int nf, long seed) {
         Queue<Estacion> estacionesDestino = new ConcurrentLinkedQueue<>();
-        Furgonetas fs = new Furgonetas(nf, estaciones.size(), estaciones);
+        furgonetas = new Furgonetas(nf, estaciones.size(), estaciones);
         int i = 0;
         int contador = 0;
         while (i < estaciones.size()) {
