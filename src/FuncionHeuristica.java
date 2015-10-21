@@ -33,10 +33,21 @@ public class FuncionHeuristica implements HeuristicFunction{
         {
             Estacion e = est.get(i);
             int bicis_llevadas = state.getBicisE().get(i);
-            int eur = (e.getDemanda() >= e.getNumBicicletasNext()+bicis_llevadas)? bicis_llevadas: -bicis_llevadas;
+            int eur;
+            if (e.getDemanda() >= e.getNumBicicletasNext())
+            {
+                if (e.getDemanda() >= e.getNumBicicletasNext() + bicis_llevadas)
+                    eur = bicis_llevadas;
+                else eur = 0;//e.getDemanda()-e.getNumBicicletasNext();
+            }
+            else
+            {
+                if (e.getNumBicicletasNext()+bicis_llevadas >= e.getDemanda()) eur = 0;
+                else eur = (e.getNumBicicletasNext()+bicis_llevadas) - e.getDemanda();
+            }
             sum_acord += eur;
-        }
 
+        }
 
         suma = sum_cost + sum_acord;
         return -suma;

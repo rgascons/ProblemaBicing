@@ -10,7 +10,7 @@ import java.util.Properties;
 public class Main {
 
     public static void main(String[] args) {
-        try {
+        /*try {
             Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
             Estado estado = new Estado(5, estaciones, 1234);
             System.out.println("Hello World!");
@@ -23,9 +23,9 @@ public class Main {
             printInstrumentation(agent.getInstrumentation());
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        //ControladorExperimentos c = new ControladorExperimentos();
-        //c.lanzadorExperimentos();
+        }*/
+        ControladorExperimentos c = new ControladorExperimentos();
+        c.lanzadorExperimentos();
 
     }
 

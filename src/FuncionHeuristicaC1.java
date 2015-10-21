@@ -24,7 +24,7 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
             {
                 if (e.getDemanda() >= e.getNumBicicletasNext() + bicis_llevadas)
                     eur = bicis_llevadas;
-                else eur = e.getDemanda()-e.getNumBicicletasNext(); //0
+                else eur = 0;//e.getDemanda()-e.getNumBicicletasNext();
             }
             else
             {
