@@ -41,29 +41,6 @@ public class Estado {
         estaciones = estado.getEstaciones();
         this.bicisE = new ArrayList<>(estado.getBicisE());
         this.ini = new ArrayList<>(estado.ini);
-        /*for (Furgoneta f : this.furgonetas)
-        {
-            Estacion e1 = f.getPrimerDestino();
-            if(e1 != null)
-            {
-                int index = m.get(e1);
-                Integer bic = this.bicisE.get(index);
-                Integer llev = f.getBicisPrimeraEstacion();
-                bic = (bic == null) ? llev : bic + llev;
-                this.bicisE.set(index, bic);
-            }
-
-            Estacion e2  = f.getSegundoDestino();
-            if(e2 != null)
-            {
-                int i2 = m.get(e2);
-                Integer bic2 = this.bicisE.get(i2);
-                Integer llev2 = f.getBicisEstacionOrigen()-f.getBicisPrimeraEstacion();
-                bic2 = (bic2 == null)? llev2 : bic2+llev2;
-                this.bicisE.set(i2,bic2);
-            }
-        }*/
-
     }
 
     private void generadorEstadoInicial1(int nf, long seed) {
@@ -76,7 +53,6 @@ public class Estado {
             bicisE.add(0);
             ini.add(false);
         }
-
         for (Furgoneta f : this.furgonetas)
         {
             Estacion o = f.getOrigen();
@@ -120,9 +96,11 @@ public class Estado {
     private void generadorEstadoInicial2(int nf, long seed) {
         Queue<Estacion> estacionesDestino = new ConcurrentLinkedQueue<>();
         Furgonetas fs = new Furgonetas(nf, estaciones.size(), estaciones);
-        for (int i = 0; i < nf; ++i) {
+        int i = 0;
+        int contador = 0;
+        while (i < estaciones.size()) {
             boolean excedente = false;
-            int j = 0;
+            int j = i;
             int bicisOrigen = 0;
             while (!excedente && j < estaciones.size()) {
                 Estacion e = estaciones.get(j);
@@ -147,13 +125,27 @@ public class Estado {
                 if (primerDestino == null) bicisOrigen = 0;
                 int bicisPrimeraEst = 0;
                 if (bicisOrigen > 0) {//bicisRestantes siempr sera mayor que 0 porque sino no estaria en la cola
-                    int bicisRestantes = primerDestino.getDemanda() - primerDestino.getNumBicicletasNext() - primerDestino.getNumBicicletasNoUsadas();
-                    bicisPrimeraEst = (bicisRestantes > 29)?29:bicisRestantes;
+                    if (segundoDestino != null) {//Si hay qu repartir entre la primera y la segunda
+                        int bicisRestantes = primerDestino.getDemanda() - primerDestino.getNumBicicletasNext() - primerDestino.getNumBicicletasNoUsadas();
+                        bicisPrimeraEst = (bicisRestantes > 29)?29:bicisRestantes;
+                    }
+                    else bicisPrimeraEst = bicisOrigen;//Sino todas para la primera
+                    if (noNulo(origen)) {
+                        int io = m.get(origen);
+                        bicisE.set(io, bicisE.get(io) - bicisOrigen);
+                    }
+                    if (noNulo(primerDestino)) {
+                        int ip = m.get(primerDestino);
+                        bicisE.set(ip, bicisE.get(ip) + bicisPrimeraEst);
+                    }
                 }
                 Furgoneta f = new Furgoneta(origen, primerDestino, segundoDestino, bicisOrigen, bicisPrimeraEst);
+                ++contador;
                 furgonetas.add(f);
             }
+            i = j + 1;
         }
+        for (int j = contador; j < nf; ++j) furgonetas.add(new Furgoneta(null, null, null, 0, 0));
     }
 
     public static Map<Estacion, Integer> getM() {
