@@ -10,7 +10,7 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
 
     @Override
     public List getSuccessors(Object aState) {
-        ArrayList retVal = new ArrayList();
+        ArrayList<Successor> retVal = new ArrayList<>();
         Estado estado = (Estado) aState;
         Furgonetas furgonetas = estado.getFurgonetas();
         Estaciones estaciones = estado.getEstaciones();
@@ -55,14 +55,14 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                         Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
                         Estacion nove = nuevoEstado.getEstaciones().get(j);
                         nuevoEstado.quitarEstacion(nove, neo);
-                        FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
-                        /*fhc1.getHeuristicValue(nuevoEstado);*/
+                        /*FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                        fhc1.getHeuristicValue(nuevoEstado);*/
                         retVal.add(new Successor(Estado.QUITAR_ESTACION+" #"+i+"# "+Estado.getM().get(nove), nuevoEstado));
                     }
                 }
             }
 
-            for (int j = 0; j <= 30; ++j) {
+            for (int j = 1; j <= f.getBicisEstacionOrigen(); ++j) {
                 if (estado.puedeDejarBicis(f, j)) {
                     Estado nuevoEstado = new Estado(estado);
                     Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
@@ -74,16 +74,16 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
 
             }
 
-            for (int j = 0; j <= 30; ++j) {
+            /*for (int j = 0; j <= f.getOrigen().getNumBicicletasNoUsadas(); ++j) {
                 if (estado.puedeRecogerBicis(f, j)) {
                     Estado nuevoEstado = new Estado(estado);
                     Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
                     nuevoEstado.recogerBicis(neo, j);
                     /*FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
-                    fhc1.getHeuristicValue(nuevoEstado);*/
+                    //fhc1.getHeuristicValue(nuevoEstado);
                     retVal.add(new Successor(Estado.RECOGER_BICIS+" #"+i+"# {{" + j + "}}", nuevoEstado));
                 }
-            }
+            }*/
         }
         /*System.out.println("Genero " + retVal.size() + " estados sucesores");
         for (int j = 0; j < furgonetas.size(); ++j) {

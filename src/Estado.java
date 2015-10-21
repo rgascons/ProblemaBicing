@@ -44,7 +44,6 @@ public class Estado {
     }
 
     public Estado(Estado estado) {
-        //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         estaciones = estado.getEstaciones();
         this.bicisE = new ArrayList<>(estado.getBicisE());
@@ -100,6 +99,7 @@ public class Estado {
             }
         }
     }
+
 
     private void generadorEstadoInicial2(int nf, long seed) {
         Queue<Estacion> estacionesDestino = new ConcurrentLinkedQueue<>();
@@ -185,7 +185,8 @@ public class Estado {
     public void setbicisE(ArrayList<Integer> bicisE) {this.bicisE = bicisE;}
 
     public boolean puedeSustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
-        return noNulo(vieja) && noNulo(nueva) && !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
+        int bicis_nec = nueva.getDemanda()-(nueva.getNumBicicletasNext()+bicisE.get(m.get(nueva)));
+        return noNulo(vieja) && bicis_nec > 0 && !nueva.equals(vieja) && coincideEstacionDestino(vieja, f);
     }
 
     public void sustituirEstacion(Estacion vieja, Estacion nueva, Furgoneta f) {
@@ -214,8 +215,10 @@ public class Estado {
 
     }
 
+    //Pre: 0< n <= f.getBicisEstacionOrigen
     public boolean puedeDejarBicis(Furgoneta f, int n) {
-        return n >= 0 && n <= f.getBicisEstacionOrigen() && noNulo(f.getPrimerDestino());
+        //TODO El cero: ¿útil o innecesario?
+        return n >= 0 && noNulo(f.getPrimerDestino());
     }
 
     public void dejarBicis(Furgoneta f, int n) {
@@ -264,7 +267,9 @@ public class Estado {
     }
 
     public boolean puedeCambiarEstacionOrigen(Estacion e, Furgoneta f) {
-        return !ini.get(m.get(e)) &&(!e.equals(f.getPrimerDestino()) && !e.equals(f.getSegundoDestino()));
+        int bicis_fix = e.getNumBicicletasNoUsadas()+bicisE.get(m.get(e));
+        int bicis_disp = (e.getNumBicicletasNext()-bicis_fix >= e.getDemanda())? bicis_fix:e.getNumBicicletasNext()-e.getDemanda();
+        return !ini.get(m.get(e)) && bicis_disp > 0 &&(!e.equals(f.getPrimerDestino()) && !e.equals(f.getSegundoDestino()));
     }
 
     public void cambiarEstacionOrigen(Estacion e, Furgoneta f) {
@@ -343,6 +348,7 @@ public class Estado {
         }
     }
 
+    //TODO Eliminar furgoneta y añadir estación
 
     private boolean coincideEstacionDestino(Estacion e, Furgoneta f) {
         return (noNulo(f.getPrimerDestino()) && f.getPrimerDestino().equals(e)) || (noNulo(f.getSegundoDestino()) && f.getSegundoDestino().equals(e));
@@ -356,5 +362,10 @@ public class Estado {
 
     public void setBicisE(ArrayList<Integer> bicisE) {
         this.bicisE = bicisE;
+    }
+
+    public String toString()
+    {
+        return "";
     }
 }

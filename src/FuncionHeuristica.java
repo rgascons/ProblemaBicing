@@ -50,6 +50,7 @@ public class FuncionHeuristica implements HeuristicFunction{
         }
 
         suma = sum_cost + sum_acord;
+        System.out.print(suma+"\n");
         return -suma;
     }
 }
