@@ -77,9 +77,4 @@ public class Furgoneta implements Cloneable {
     public Furgoneta clone() {
         return new Furgoneta(origen, primerDestino, segundoDestino, bicisEstacionOrigen, bicisPrimeraEstacion);
     }
-
-    public boolean estaVacia()
-    {
-        return origen == null || segundoDestino == null;
-    }
 }
