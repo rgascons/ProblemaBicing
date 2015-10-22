@@ -26,7 +26,9 @@ public class ControladorExperimentos {
                     int gi = s.nextInt();
                     System.out.println("Elige el número de estaciones:");
                     int ne = s.nextInt();
-                    Estaciones estaciones = new Estaciones(ne, ne*50, 0, 1234);
+                    System.out.println("Elige el tipo de escenario (0 o 1):");
+                    int te = s.nextInt();
+                    Estaciones estaciones = new Estaciones(ne, ne*50, te, 1234);
                     Estado estado = new Estado(gi, ne/5, estaciones, 1234);
                     System.out.println("Hello World!");
                     Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());

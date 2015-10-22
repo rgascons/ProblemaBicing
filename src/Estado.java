@@ -1,10 +1,7 @@
 import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Estado {
@@ -64,7 +61,10 @@ private class par {
     }
 
     private void generadorEstadoInicial1(int nf, long seed) {
-        furgonetas = new Furgonetas(nf, estaciones.size(), seed, estaciones);
+        furgonetas = new Furgonetas(nf, estaciones.size(), estaciones);
+        boolean orig[] = new boolean[estaciones.size()];
+        Random myRandom = new Random(seed);
+
         this.bicisE = new ArrayList<>();
         this.ini = new ArrayList<>();
         m = new HashMap<>();
@@ -73,8 +73,72 @@ private class par {
             bicisE.add(0);
             ini.add(false);
         }
-        for (Furgoneta f : this.furgonetas)
+
+        for (int i = 0; i < nf ; ++i)
         {
+            int idEstOrigen;
+            int cn0 = 0;
+            boolean excedente;
+            do {
+                idEstOrigen = myRandom.nextInt(estaciones.size());
+                Estacion eo = estaciones.get(idEstOrigen);
+                excedente = eo.getNumBicicletasNext() > eo.getDemanda();
+                if (cn0 >= estaciones.size()) excedente = true;
+                ++cn0;
+            }
+            while (orig[idEstOrigen] || !excedente); //Si ya es un origen o no tiene excedente de bicis...
+            orig[idEstOrigen] = true;
+            int idPrimDestino;
+            boolean deficit;
+            int cn1 = 0;
+            do {
+                idPrimDestino = myRandom.nextInt(estaciones.size());
+                Estacion ed1 = estaciones.get(idPrimDestino);
+                deficit = ed1.getNumBicicletasNext() <= ed1.getDemanda();
+                if (cn1 >= estaciones.size()) deficit = true;
+                ++cn1;
+            }
+            while (idEstOrigen == idPrimDestino && !deficit);
+            int idSegDestino;
+            boolean def2;
+            int cn2 = 0;
+            do {
+                idSegDestino = myRandom.nextInt(estaciones.size());
+                Estacion ed2 = estaciones.get(idSegDestino);
+                def2 = ed2.getNumBicicletasNext() <= ed2.getDemanda();
+                if (cn2 >= estaciones.size()) def2 = true;
+                ++cn2;
+            }
+            while (idSegDestino == idEstOrigen || idSegDestino == idPrimDestino || !def2);
+
+            //TODO Solo coger las bicis necesarias
+            Estacion origen = estaciones.get(idEstOrigen);
+            Estacion dest1 = estaciones.get(idPrimDestino);
+            Estacion dest2 = estaciones.get(idSegDestino);
+            int bicisOrigen = origen.getNumBicicletasNoUsadas()+bicisE.get(idEstOrigen);
+            int bicisNec1 =  dest1.getDemanda()-(dest1.getNumBicicletasNext()+bicisE.get(idPrimDestino));
+            int bicisNec2 = dest2.getDemanda()-(dest2.getNumBicicletasNext()+bicisE.get(idSegDestino));
+            // Si al coger todas las bicis en origen no cumplimos la demanda, cogemos la diferencia:
+            bicisOrigen = ((origen.getNumBicicletasNext()+bicisE.get(idPrimDestino))-bicisOrigen < origen.getDemanda())? (origen.getNumBicicletasNext()+bicisE.get(idPrimDestino))-origen.getDemanda():bicisOrigen;
+            // Si en origen hay más bicicletas de las necesarias, cogemos solo las necesarias:
+            //bicisOrigen = (bicisOrigen > bicisNec1+bicisNec2)? bicisNec1+bicisNec2: bicisOrigen;
+            // Si hay más de 30 bicis para llevar, coge 30:
+            int bicisfurg = (bicisOrigen >= 30)? 30: bicisOrigen;
+            int bicis1est;
+            if (bicisNec1 > 0)
+                bicis1est = (bicisfurg >= bicisNec1)? bicisNec1 : bicisfurg;
+            else {
+                bicis1est = 0;
+            }
+            Furgoneta f = new Furgoneta(
+                    estaciones.get(idEstOrigen),
+                    estaciones.get(idPrimDestino),
+                    estaciones.get(idSegDestino),
+                    bicisfurg,
+                    bicis1est
+            );
+            furgonetas.add(f);
+
             Estacion o = f.getOrigen();
             if(o != null)
             {
