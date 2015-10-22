@@ -106,7 +106,7 @@ public class Estado {
             int bicisNec1 =  dest1.getDemanda()-(dest1.getNumBicicletasNext()+bicisE.get(idPrimDestino));
             int bicisNec2 = dest2.getDemanda()-(dest2.getNumBicicletasNext()+bicisE.get(idSegDestino));
             // Si al coger todas las bicis en origen no cumplimos la demanda, cogemos la diferencia:
-            //bicisOrigen = ((origen.getNumBicicletasNext()+bicisE.get(idPrimDestino))-bicisOrigen < origen.getDemanda())? (origen.getNumBicicletasNext()+bicisE.get(idPrimDestino))-origen.getDemanda():bicisOrigen;
+            bicisOrigen = ((origen.getNumBicicletasNext()+bicisE.get(idPrimDestino))-bicisOrigen < origen.getDemanda())? (origen.getNumBicicletasNext()+bicisE.get(idPrimDestino))-origen.getDemanda():bicisOrigen;
             // Si en origen hay más bicicletas de las necesarias, cogemos solo las necesarias:
             //bicisOrigen = (bicisOrigen > bicisNec1+bicisNec2)? bicisNec1+bicisNec2: bicisOrigen;
             // Si hay más de 30 bicis para llevar, coge 30:
