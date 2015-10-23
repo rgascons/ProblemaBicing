@@ -60,10 +60,14 @@ public class Furgoneta implements Cloneable {
         return bicisEstacionOrigen-bicisPrimeraEstacion;
     }
 
-    public void writeFrurgoneta() {
+    public boolean estaVacia() { return origen == null; }
+
+
+    public void writeFurgoneta() {
         if (origen != null) System.out.println("Mi estacion de origen es la " + Estado.getM().get(origen));
         if (primerDestino != null) System.out.println("Mi primer destino es " + Estado.getM().get(primerDestino));
         if (segundoDestino != null) System.out.println("Mi segundo destino es " + Estado.getM().get(segundoDestino));
+        else System.out.println("No tengo segunda estacion");
         if (bicisEstacionOrigen != 0) System.out.println("Recojo " + bicisEstacionOrigen + " bicis");
         if (bicisPrimeraEstacion != 0) System.out.println("En la primera estacion dejo" + bicisPrimeraEstacion);
         System.out.println("En la segunda estacion dejo" + (bicisEstacionOrigen - bicisPrimeraEstacion));
