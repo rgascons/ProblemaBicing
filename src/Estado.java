@@ -17,6 +17,13 @@ public class Estado {
     public static String CAMBIAR_ESTACION_ORIGEN = "cambiar_estacion_origen";
     public static String QUITAR_ESTACION = "quitar_estacion";
 
+    private class comparador implements Comparator<par> {
+        @Override
+        public int compare(par o1, par o2) {
+            return -(o1.getBicisOrigen() - o2.getBicisOrigen());
+        }
+    }
+
     private class par {
         private Estacion origen;
         private int bicisOrigen;
@@ -45,11 +52,12 @@ public class Estado {
                 generadorEstadoInicial1(nf, seed);
                 break;
             case 2:
-                generadorEstadoInicial2(nf, seed);
+                generadorEstadoInicial2(nf);
                 break;
             default:
                 System.out.println("El indice no es valido");
         }
+        //this.writeEstado();
     }
 
     public Estado(Estado estado) {
@@ -176,8 +184,10 @@ public class Estado {
         }
     }
 
-    private void generadorEstadoInicial2(int nf, long seed) {
-        Queue<par> estacionesOrigen = new ConcurrentLinkedQueue<>();
+
+
+    private void generadorEstadoInicial2(int nf) {
+        Queue<par> estacionesOrigen = new PriorityQueue<>(new comparador());
         Queue<Estacion> estacionesDestino = new ConcurrentLinkedQueue<>();
         furgonetas = new Furgonetas(nf, estaciones.size(), estaciones);
         for (int i = 0; i < estaciones.size(); ++i) {
@@ -185,16 +195,17 @@ public class Estado {
             if (e.getDemanda() <= e.getNumBicicletasNext()) {
                 int bicisOrigen = (e.getNumBicicletasNoUsadas() > 30) ? 30 : e.getNumBicicletasNoUsadas();
                 par p = new par(e, bicisOrigen);
-                System.out.println("He metido la estacion " + i + "en la cola de origen con " + bicisOrigen + "bicis");
+                //System.out.println("He metido la estacion " + i + " en la cola de origen con " + bicisOrigen + " bicis");
                 estacionesOrigen.add(p);
-            } else if (e.getDemanda() < e.getNumBicicletasNext()) {
-                int bicisCoger = e.getNumBicicletasNoUsadas();
+            }
+            else if (e.getDemanda() < e.getNumBicicletasNext() + e.getNumBicicletasNoUsadas()) {
+                int bicisCoger = e.getNumBicicletasNoUsadas() + e.getNumBicicletasNext() - e.getDemanda();//Para saber cuantas puedo coger
                 int bicisOrigen = (bicisCoger > 30) ? 30 : bicisCoger;
                 par p = new par(e, bicisOrigen);
-                System.out.println("He metido la estacion " + i + "en la cola de origen con " + bicisOrigen + "bicis");
+                //System.out.println("He metido la estacion " + i + " en la cola de origen con " + bicisOrigen + " bicis");
                 estacionesOrigen.add(p);
             } else {
-                System.out.println("He metido la estacion " + i + "en la cola");
+                //System.out.println("He metido la estacion " + i + " en la cola de destinos");
                 estacionesDestino.add(e);
             }
         }
@@ -210,11 +221,11 @@ public class Estado {
             estacionesDestino.poll();
             int bicisPrimeraEst;
             if (segundoDestino != null) {//Si hay que repartir entre la primera y la segunda
-                //bicisRestantes siempre sera mayor que 0 porque sino no estaria en la cola
-                int bicisRestantes = (primerDestino.getDemanda() - (primerDestino.getNumBicicletasNext()+bicisE.get(m.get(primerDestino))));// - primerDestino.getNumBicicletasNoUsadas();
+                int bicisRestantes = primerDestino.getDemanda() - primerDestino.getNumBicicletasNext()- primerDestino.getNumBicicletasNoUsadas();//bicisE.get(m.get(primerDestino)))
                 //Si se necesitan mas bicis de las que se han recogido se cogen las que se han recogido menos 1 para que lleve 1 a la segunda estacion
                 bicisPrimeraEst = (bicisRestantes >= bicisOrigen) ? bicisOrigen - 1 : bicisRestantes;
-            } else bicisPrimeraEst = bicisOrigen;//Sino todas para la primera
+            }
+            else bicisPrimeraEst = bicisOrigen;//Sino todas para la primera
             int io = m.get(origen);
             bicisE.set(io, bicisE.get(io) - bicisOrigen);
             int ip = m.get(primerDestino);//tampoco es nulo
@@ -429,16 +440,15 @@ public class Estado {
         Furgoneta f = furgonetas.get(i);
         int ido = m.get(f.getOrigen());
         int id1 = m.get(f.getPrimerDestino());
-        int id2 = m.get(f.getSegundoDestino());
-
+        if (noNulo(f.getSegundoDestino())) {
+            int id2 = m.get(f.getSegundoDestino());
+            int old2 = bicisE.get(id2);
+            bicisE.set(id2, old2-f.getBicisSegundaEstacion());
+        }
         int oldo = bicisE.get(ido);
         int old1 = bicisE.get(id1);
-        int old2 = bicisE.get(id2);
-
         bicisE.set(ido, oldo+f.getBicisEstacionOrigen());
         bicisE.set(id1, old1-f.getBicisPrimeraEstacion());
-        bicisE.set(id2, old2-f.getBicisSegundaEstacion());
-
         f.setOrigen(null);
         f.setPrimerDestino(null);
         f.setSegundoDestino(null);

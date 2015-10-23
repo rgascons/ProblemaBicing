@@ -74,7 +74,6 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
             );
             this.add(f);
         }
-
     }
 
     public Furgonetas(int nfurg, int nest, Estaciones estaciones)
