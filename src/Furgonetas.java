@@ -54,7 +54,6 @@ public class Furgonetas extends ArrayList<Furgoneta> implements Cloneable{
             }
             while (idSegDestino == idEstOrigen || idSegDestino == idPrimDestino || !def2);
 
-            //TODO Solo coger las bicis necesarias
             Estacion origen = estaciones.get(idEstOrigen);
             int bicisOrigen = origen.getNumBicicletasNoUsadas();
             //if (origen.getNumBicicletasNext()-bicisOrigen < origen.getDemanda()) bicisOrigen = origen.getNumBicicletasNext()-origen.getDemanda();

@@ -45,15 +45,20 @@ public class ControladorExperimentos {
                 break;
             case 2:
                 try {
+                    System.out.println("Elige el generador inicial (1 o 2):");
+                    int gi = s.nextInt();
+                    System.out.println("Elige la variable k:");
+                    int k = s.nextInt();
+                    System.out.println("Elige la variable lambda:");
+                    int lambda = s.nextInt();
                     Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
-                    Estado estado = new Estado(2,5, estaciones, 1234);
-                    Estado estado = new Estado(1, 5, estaciones, 1234);
+                    Estado estado = new Estado(gi,5, estaciones, 1234);
                     System.out.println("Hello World!");
                     Problem problem = new Problem(estado, new FuncionSucesoraSimulatedAnnealing(), new GoalTest(), new FuncionHeuristica());
-                    Search search = new SimulatedAnnealingSearch(2000,100,5,0.001D);
+                    Search search = new SimulatedAnnealingSearch(2000,100,k,(double)lambda);
                     SearchAgent agent = new SearchAgent(problem, search);
-                    System.out.print("Acciones\n");
-                    printActions(agent.getActions());
+                    //System.out.print("Acciones\n");
+                    //printActions(agent.getActions());
                     System.out.print("Instrumentación\n");
                     printInstrumentation(agent.getInstrumentation());
                 } catch (Exception e) {

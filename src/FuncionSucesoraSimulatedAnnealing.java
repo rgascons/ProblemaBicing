@@ -48,6 +48,16 @@ public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
                         valid = true;
                     }
                     break;
+                case 3 :
+                    if (state.puedeQuitarEstacion(e, f))
+                    {
+                        Estado nuevoEstado = new Estado(state);
+                        nuevoEstado.quitarEstacion(e, f);
+                        Estacion nove = nuevoEstado.getEstaciones().get(m);
+                        retVal.add(new Successor(Estado.QUITAR_ESTACION+" #"+n+"# "+Estado.getM().get(nove), nuevoEstado));
+                        valid = true;
+                    }
+                    break;
                 default:
                     break;
             }

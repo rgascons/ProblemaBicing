@@ -53,7 +53,6 @@ public class Estado {
     }
 
     public Estado(Estado estado) {
-        //TODO: falta implementar la copia de bicisE, en principio un loop por el Array es suficiente. Also, nunca añadimos nada a bicisE
         this.furgonetas = estado.furgonetas.clone();
         estaciones = estado.getEstaciones();
         this.bicisE = new ArrayList<>(estado.getBicisE());
