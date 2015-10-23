@@ -50,16 +50,35 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                         fhc1.getHeuristicValue(nuevoEstado);*/
                         retVal.add(new Successor(Estado.SUSTITUIR_ESTACION+" #"+i+"# "+Estado.getM().get(f.getSegundoDestino())+" -> "+Estado.getM().get(nove), nuevoEstado));
                     }
-                    if (estado.puedeQuitarEstacion(e, f)) {
-                        Estado nuevoEstado = new Estado(estado);
-                        Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
-                        Estacion nove = nuevoEstado.getEstaciones().get(j);
-                        nuevoEstado.quitarEstacion(nove, neo);
-                        /*FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
-                        fhc1.getHeuristicValue(nuevoEstado);*/
-                        retVal.add(new Successor(Estado.QUITAR_ESTACION+" #"+i+"# "+Estado.getM().get(nove), nuevoEstado));
-                    }
                 }
+            }
+
+            if (estado.puedeQuitarEstacion(f.getPrimerDestino() ,f)) {
+                Estado nuevoEstado = new Estado(estado);
+                Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
+                nuevoEstado.quitarEstacion(neo.getPrimerDestino(), neo);
+                FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                fhc1.getHeuristicValue(nuevoEstado);
+                retVal.add(new Successor(Estado.QUITAR_ESTACION+" #"+i+"# "+Estado.getM().get(f.getPrimerDestino()), nuevoEstado));
+            }
+
+
+            if (estado.puedeQuitarEstacion(f.getSegundoDestino() ,f)) {
+                Estado nuevoEstado = new Estado(estado);
+                Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
+                nuevoEstado.quitarEstacion(neo.getSegundoDestino(), neo);
+                FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                fhc1.getHeuristicValue(nuevoEstado);
+                retVal.add(new Successor(Estado.QUITAR_ESTACION+" #"+i+"# "+Estado.getM().get(f.getSegundoDestino()), nuevoEstado));
+            }
+
+            if (estado.puedeEliminarFurgoneta(i))
+            {
+                Estado nuevoEstado = new Estado(estado);
+                nuevoEstado.eliminarFurgoneta(i);
+                FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                fhc1.getHeuristicValue(nuevoEstado);
+                retVal.add(new Successor(Estado.ELIMINAR_FURGONETA+" ~"+i+"~ ", nuevoEstado));
             }
 
             for (int j = 1; j <= f.getBicisEstacionOrigen(); ++j) {
@@ -67,8 +86,8 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
                     Estado nuevoEstado = new Estado(estado);
                     Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
                     nuevoEstado.dejarBicis(neo, j);
-                    /*FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
-                    fhc1.getHeuristicValue(nuevoEstado);*/
+                    FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                    fhc1.getHeuristicValue(nuevoEstado);
                     retVal.add(new Successor(Estado.DEJAR_BICIS + " #"+i+"# [[" + j + "]]", nuevoEstado));
                 }
 
