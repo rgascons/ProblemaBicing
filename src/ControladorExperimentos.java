@@ -49,7 +49,6 @@ public class ControladorExperimentos {
                     int lambda = s.nextInt();
                     Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
                     Estado estado = new Estado(gi,5, estaciones, 1234);
-                    System.out.println("Hello World!");
                     Problem problem = new Problem(estado, new FuncionSucesoraSimulatedAnnealing(), new GoalTest(), new FuncionHeuristica());
                     Search search = new SimulatedAnnealingSearch(2000,100,k,(double)lambda);
                     SearchAgent agent = new SearchAgent(problem, search);
