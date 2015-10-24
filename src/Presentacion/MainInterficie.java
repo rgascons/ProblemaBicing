@@ -43,7 +43,6 @@ public class MainInterficie extends Application{
     private RadioButton operadoresv2;
     private Button ejecutar;
     private Button reiniciar;
-    private Button nuevaSol;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -80,12 +79,12 @@ public class MainInterficie extends Application{
                 nEst, nEstText, nFurg, nFurgText, nBicis, nBicisText, seed, randomSeed, customSeed, customSeedField);
         parametresBicis.setAlignment(Pos.TOP_CENTER);
 
-        canvas = new GridCiudad(400, 400, 150);
+        canvas = new GridCiudad(400, 400);
         HBox canvasLog = new HBox();
         canvasLog.getChildren().addAll(canvas);
         canvasLog.setAlignment(Pos.CENTER);
 
-        progressBar = new ProgressBar(-1.0D);
+        progressBar = new ProgressBar(0);
         progressBar.setMinWidth(600);
         HBox progress = new HBox();
         progress.getChildren().add(progressBar);
@@ -155,12 +154,34 @@ public class MainInterficie extends Application{
 
         ejecutar = new Button("Ejecutar");
         ejecutar.setOnAction(event -> {
-            ejecutarAlgorismo();
+            try {
+                progressBar.setProgress(-1.0D);
+                ejecutarAlgorismo();
+                progressBar.setProgress(0);
+            } catch (Exception e) {
+                progressBar.setProgress(0);
+                ConfirmationDialog error = new ConfirmationDialog(stage, "Algo no ha ido bien");
+                error.show();
+            }
         });
         reiniciar = new Button("Reiniciar");
-        nuevaSol = new Button("Nueva solucion");
+        reiniciar.setOnAction(event -> {
+            nEstText.setText("");
+            nFurgText.setText("");
+            nBicisText.setText("");
+            randomSeed.setSelected(true);
+            customSeedField.setText("");
+            canvas.clear();
+            hillClimb.setSelected(true);
+            numIt.setText("");
+            k.setText("");
+            lambda.setText("");
+            H1.setSelected(true);
+            generadorRand.setSelected(true);
+            operadoresv1.setSelected(true);
+        });
         HBox buttonBox = new HBox();
-        buttonBox.getChildren().addAll(ejecutar, reiniciar, nuevaSol);
+        buttonBox.getChildren().addAll(ejecutar, reiniciar);
         buttonBox.setSpacing(10);
         buttonBox.setAlignment(Pos.CENTER);
 

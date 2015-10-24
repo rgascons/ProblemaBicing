@@ -39,6 +39,11 @@ public class GridCiudad extends Canvas {
         draw();
     }
 
+    public void clear() {
+        GraphicsContext gc = getGraphicsContext2D();
+        gc.clearRect(0, 0, getWidth(), getHeight());
+    }
+
     private void init(int width, int height) {
         setHeight(height);
         setWidth(width);
