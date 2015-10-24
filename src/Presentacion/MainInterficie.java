@@ -149,7 +149,7 @@ public class MainInterficie extends Application{
         generadorRand = new RadioButton("Random");
         generadorRand.setToggleGroup(generadorGroup);
         generadorRand.setSelected(true);
-        generadorPseudoRand = new RadioButton("Pseudo-rand");
+        generadorPseudoRand = new RadioButton("Por prioridad");
         generadorPseudoRand.setToggleGroup(generadorGroup);
         Label operadores = new Label("Operadores");
         ToggleGroup opGroup = new ToggleGroup();
