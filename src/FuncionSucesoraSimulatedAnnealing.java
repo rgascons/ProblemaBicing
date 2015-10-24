@@ -7,18 +7,23 @@ import java.util.List;
 import java.util.Random;
 
 public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
+
+    private static int DENOMINADOR_OPERADORES = 283;
+    private static int MAX_ITERACIONES = DENOMINADOR_OPERADORES * 4;
+
     @Override
     public List getSuccessors(Object o) {
         ArrayList<Successor> retVal = new ArrayList<>();
         Estado state = (Estado) o;
         Random rand = new Random();
         boolean valid = false;
+        int iteraciones = 0;
         while (!valid) {
             int n = rand.nextInt(state.getFurgonetas().size());
             Furgoneta f = state.getFurgonetas().get(n);
             int m = rand.nextInt(state.getEstaciones().size());
             Estacion e = state.getEstaciones().get(m);
-            int opt = rand.nextInt(283);
+            int opt = rand.nextInt(DENOMINADOR_OPERADORES);
             if (opt < 87) {
                 if (state.puedeCambiarEstacionOrigen(e, f)) {
                     Estado nuevoEstado = new Estado(state);
@@ -96,8 +101,11 @@ public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
                     FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
                     fhc1.getHeuristicValue(nuevoEstado);
                     retVal.add(new Successor(Estado.ANADIR_FURGONETA+" ~"+n+"~ ", nuevoEstado));
+                    valid = true;
                 }
             }
+            if (iteraciones == MAX_ITERACIONES) break;
+            ++iteraciones;
         }
         return retVal;
     }
