@@ -34,7 +34,7 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
             sum_acord += eur;
             bicistotal += bicis_llevadas+e.getNumBicicletasNext();
         }
-        System.out.print(sum_acord+" ("+bicistotal+")\n");
+        //System.out.print(sum_acord+" ("+bicistotal+")\n");
         return -sum_acord;
     }
 }

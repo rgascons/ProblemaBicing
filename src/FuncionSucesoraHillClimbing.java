@@ -14,10 +14,10 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
         Estado estado = (Estado) aState;
         Furgonetas furgonetas = estado.getFurgonetas();
         Estaciones estaciones = estado.getEstaciones();
-        System.out.print("-----\n");
+        /*System.out.print("-----\n");
         for (Furgoneta furgoneta : furgonetas)
             System.out.print(Estado.getM().get(furgoneta.getOrigen()) + "->" + Estado.getM().get(furgoneta.getPrimerDestino()) + "->" + Estado.getM().get(furgoneta.getSegundoDestino()) + "\n");
-        System.out.print("-----\n");
+        System.out.print("-----\n");*/
         for (int i = 0 ; i < furgonetas.size();++i) {
             Furgoneta f = furgonetas.get(i);
             for (int j = 0; j < estaciones.size(); ++j) {

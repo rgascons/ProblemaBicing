@@ -69,8 +69,8 @@ public class ControladorExperimentos {
                     }
                     float lambda = s.nextFloat();
                     System.out.println("Experimento: Simulated Annealing");
-                    Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
-                    Estado estado = new Estado(1,5, estaciones, 1234);
+                    Estaciones estaciones = new Estaciones(25, 1250, 0, (int)System.nanoTime());
+                    Estado estado = new Estado(1,5, estaciones, (int)System.nanoTime());
                     Problem problem = new Problem(estado, new FuncionSucesoraSimulatedAnnealing(), new GoalTest(), new FuncionHeuristicaC1());
                     Search search = new SimulatedAnnealingSearch(p,pgt,k,lambda);
                     SearchAgent agent = new SearchAgent(problem, search);
@@ -89,23 +89,25 @@ public class ControladorExperimentos {
                     int gi = s.nextInt();
                     System.out.println("Elige el número de estaciones:");
                     int ne = s.nextInt();
-                    System.out.println("Elige el tipo de escenario (0 o 1):");
-                    int te = s.nextInt();
-                    Estaciones estaciones = new Estaciones(ne, ne*50, te, 1234);
-                    Estado estado = new Estado(gi, ne/5, estaciones, 1234);
-                    System.out.println("Experimento: Generador Inicial");
+                    System.out.println("Experimento: Hill Climbing escalable");
+                    long a = System.currentTimeMillis();
+                    Estaciones estaciones = new Estaciones(ne, ne*50, 0, (int)System.nanoTime());
+                    Estado estado = new Estado(gi, ne/5, estaciones, (int)System.nanoTime());
                     Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
                     Search search = new HillClimbingSearch();
                     SearchAgent agent = new SearchAgent(problem, search);
+                    long b = System.currentTimeMillis();
                     System.out.print("Acciones\n");
                     printActions(agent.getActions());
                     System.out.print("Instrumentación\n");
                     printInstrumentation(agent.getInstrumentation());
+                    System.out.print("Time: "+(b-a)+" ms");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
             case 5:
+                System.out.println("Experimento: Diferencia de Beneficio");
                 break;
             case 6:
                 break;
