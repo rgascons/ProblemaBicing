@@ -14,8 +14,10 @@ public class Estado {
     public static String SUSTITUIR_ESTACION = "sustituir_estacion";
     public static String DEJAR_BICIS = "dejar_bicis";
     public static String ELIMINAR_FURGONETA = "eliminar_furgoneta";
+    public static String ANADIR_FURGONETA = "añadir_furgoneta";
     public static String CAMBIAR_ESTACION_ORIGEN = "cambiar_estacion_origen";
     public static String QUITAR_ESTACION = "quitar_estacion";
+    public static String RECOGER_BICIS = "recoger_bicis";
 
     private class comparador implements Comparator<par> {
         @Override
@@ -413,6 +415,10 @@ public class Estado {
                 bicisE.set(m.get(n1), (ob-old2)+f.getBicisPrimeraEstacion());
             }
             else {
+                int oldo = bicisE.get(m.get(f.getOrigen()));
+                bicisE.set(m.get(f.getOrigen()), oldo-f.getBicisEstacionOrigen());
+                int old1 = bicisE.get(m.get(f.getPrimerDestino()));
+                bicisE.set(m.get(f.getPrimerDestino()), old1-f.getBicisPrimeraEstacion());
                 f.setPrimerDestino(null);
                 f.setBicisPrimeraEstacion(0);
                 f.setOrigen(null);
@@ -439,21 +445,43 @@ public class Estado {
     {
         Furgoneta f = furgonetas.get(i);
         int ido = m.get(f.getOrigen());
-        int id1 = m.get(f.getPrimerDestino());
+
+        if (f.getPrimerDestino() != null)
+        {
+            int id1 = m.get(f.getPrimerDestino());
+            int old1 = bicisE.get(id1);
+            bicisE.set(id1, old1-f.getBicisPrimeraEstacion());
+        }
+
         if (noNulo(f.getSegundoDestino())) {
             int id2 = m.get(f.getSegundoDestino());
             int old2 = bicisE.get(id2);
             bicisE.set(id2, old2-f.getBicisSegundaEstacion());
         }
         int oldo = bicisE.get(ido);
-        int old1 = bicisE.get(id1);
+
         bicisE.set(ido, oldo+f.getBicisEstacionOrigen());
-        bicisE.set(id1, old1-f.getBicisPrimeraEstacion());
+
         f.setOrigen(null);
         f.setPrimerDestino(null);
         f.setSegundoDestino(null);
         f.setBicisEstacionOrigen(0);
         f.setBicisPrimeraEstacion(0);
+    }
+
+    public boolean puedeAnadirFurgoneta(int i)
+    {
+        return furgonetas.get(i).estaVacia();
+    }
+
+    public void anadirFurgoneta(int i)
+    {
+        Furgoneta f = furgonetas.get(i);
+        f.setOrigen(estaciones.get(0));
+        f.setBicisEstacionOrigen(f.getOrigen().getNumBicicletasNext()-bicisE.get(0));
+        f.setPrimerDestino(estaciones.get(1));
+        f.setBicisPrimeraEstacion(f.getBicisEstacionOrigen());
+        f.setSegundoDestino(estaciones.get(2));
     }
 
     private boolean coincideEstacionDestino(Estacion e, Furgoneta f) {
