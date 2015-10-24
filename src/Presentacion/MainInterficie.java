@@ -284,10 +284,10 @@ public class MainInterficie extends Application{
             SearchAgent agent = new SearchAgent(problem, search);
             redirectSystemStreams();
             if (hillClimb.isSelected()) {
-                System.out.print("Acciones\n");
+                System.out.print("---Acciones---\n");
                 printActions(agent.getActions());
             }
-            System.out.print("Instrumentación\n");
+            System.out.print("---Instrumentación---\n");
             printInstrumentation(agent.getInstrumentation());
 
             System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
