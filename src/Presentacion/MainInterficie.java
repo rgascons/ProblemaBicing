@@ -8,6 +8,7 @@ import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.*;
 import java.util.List;
 import java.util.Properties;
 
@@ -29,10 +31,12 @@ public class MainInterficie extends Application{
     private RadioButton customSeed;
     private NumberTextField customSeedField;
     private GridCiudad canvas;
+    private TextArea log;
     private ProgressBar progressBar;
     private RadioButton hillClimb;
     private RadioButton annealing;
     private NumberTextField numIt;
+    private NumberTextField pasosIt;
     private NumberTextField k;
     private NumberTextField lambda;
     private RadioButton H1;
@@ -80,8 +84,10 @@ public class MainInterficie extends Application{
         parametresBicis.setAlignment(Pos.TOP_CENTER);
 
         canvas = new GridCiudad(400, 400);
+        log = new TextArea();
+        log.setEditable(false);
         HBox canvasLog = new HBox();
-        canvasLog.getChildren().addAll(canvas);
+        canvasLog.getChildren().addAll(canvas, log);
         canvasLog.setAlignment(Pos.CENTER);
 
         progressBar = new ProgressBar(0);
@@ -101,6 +107,10 @@ public class MainInterficie extends Application{
         numIt.setPromptText("Num it");
         numIt.setDisable(true);
         numIt.setMaxWidth(100);
+        pasosIt = new NumberTextField();
+        pasosIt.setPromptText("Pasos/it.");
+        pasosIt.setDisable(true);
+        pasosIt.setMaxWidth(100);
         k = new NumberTextField();
         k.setPromptText("K");
         k.setDisable(true);
@@ -113,17 +123,19 @@ public class MainInterficie extends Application{
             if (!oldValue && newValue) {
                 numIt.setDisable(false);
                 k.setDisable(false);
+                pasosIt.setDisable(false);
                 lambda.setDisable(false);
             } else {
                 numIt.setDisable(true);
                 k.setDisable(true);
+                pasosIt.setDisable(true);
                 lambda.setDisable(true);
             }
         });
         HBox boxAlgo = new HBox();
         boxAlgo.setSpacing(5);
         boxAlgo.setAlignment(Pos.CENTER);
-        boxAlgo.getChildren().addAll(algoritmo, hillClimb, annealing, numIt, k, lambda);
+        boxAlgo.getChildren().addAll(algoritmo, hillClimb, annealing, numIt, pasosIt, k, lambda);
 
         Label heuristicos = new Label("Heuristicos: ");
         ToggleGroup groupHeur = new ToggleGroup();
@@ -155,31 +167,18 @@ public class MainInterficie extends Application{
         ejecutar = new Button("Ejecutar");
         ejecutar.setOnAction(event -> {
             try {
-                progressBar.setProgress(-1.0D);
+                Platform.runLater(() -> progressBar.setProgress(-1.0D));
                 ejecutarAlgorismo();
-                progressBar.setProgress(0);
+                Platform.runLater(() -> progressBar.setProgress(0));
             } catch (Exception e) {
+                e.printStackTrace();
                 progressBar.setProgress(0);
                 ConfirmationDialog error = new ConfirmationDialog(stage, "Algo no ha ido bien");
                 error.show();
             }
         });
         reiniciar = new Button("Reiniciar");
-        reiniciar.setOnAction(event -> {
-            nEstText.setText("");
-            nFurgText.setText("");
-            nBicisText.setText("");
-            randomSeed.setSelected(true);
-            customSeedField.setText("");
-            canvas.clear();
-            hillClimb.setSelected(true);
-            numIt.setText("");
-            k.setText("");
-            lambda.setText("");
-            H1.setSelected(true);
-            generadorRand.setSelected(true);
-            operadoresv1.setSelected(true);
-        });
+        reiniciar.setOnAction(event -> clearAll());
         HBox buttonBox = new HBox();
         buttonBox.getChildren().addAll(ejecutar, reiniciar);
         buttonBox.setSpacing(10);
@@ -197,15 +196,58 @@ public class MainInterficie extends Application{
         stage.show();
     }
 
+    private void clearAll() {
+        nEstText.setText("");
+        nFurgText.setText("");
+        nBicisText.setText("");
+        randomSeed.setSelected(true);
+        customSeedField.setText("");
+        canvas.clear();
+        log.clear();
+        hillClimb.setSelected(true);
+        numIt.setText("");
+        pasosIt.setText("");
+        k.setText("");
+        lambda.setText("");
+        H1.setSelected(true);
+        generadorRand.setSelected(true);
+        operadoresv1.setSelected(true);
+    }
+
+    private void updateTextArea(final String text) {
+        Platform.runLater(() -> log.appendText(text));
+    }
+
+    private void redirectSystemStreams() {
+        OutputStream out = new OutputStream() {
+            @Override
+            public void write(int b) throws IOException {
+                updateTextArea(String.valueOf((char) b));
+            }
+
+            @Override
+            public void write(byte[] b, int off, int len) throws IOException {
+                updateTextArea(new String(b, off, len));
+            }
+
+            @Override
+            public void write(byte[] b) throws IOException {
+                write(b, 0, b.length);
+            }
+        };
+
+        System.setOut(new PrintStream(out, true));
+    }
+
     private void ejecutarAlgorismo() {
         int nEst = Integer.parseInt(nEstText.getText());
         int nFurg = Integer.parseInt(nFurgText.getText());
         int nBicis = Integer.parseInt(nBicisText.getText());
-        long seed;
+        int seed;
         if (randomSeed.isSelected())
-            seed = System.currentTimeMillis();
-        else seed = (long) Integer.parseInt(customSeedField.getText());
-        Estaciones estaciones = new Estaciones(nEst, nBicis, 0, (int)seed);
+            seed = (int)System.nanoTime();
+        else seed = Integer.parseInt(customSeedField.getText());
+        Estaciones estaciones = new Estaciones(nEst, nBicis, 0, seed);
         Estado estadoInicial;
         if (generadorRand.isSelected()) {
             estadoInicial = new Estado(1, nFurg, estaciones, seed);
@@ -224,7 +266,11 @@ public class MainInterficie extends Application{
                         estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristicaC1());
             }
         } else {    //annealing
-            search = new SimulatedAnnealingSearch();
+            int nIt = Integer.parseInt(numIt.getText());
+            int pasos = Integer.parseInt(pasosIt.getText());
+            int ik = Integer.parseInt(k.getText());
+            double lamd = Double.parseDouble(lambda.getText());
+            search = new SimulatedAnnealingSearch(nIt,pasos,ik,lamd);
             if (H1.isSelected()) {
                 problem = new Problem(
                         estadoInicial, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristica());
@@ -234,11 +280,19 @@ public class MainInterficie extends Application{
             }
         }
         try {
+            log.clear();
             SearchAgent agent = new SearchAgent(problem, search);
-            System.out.print("Acciones\n");
-            printActions(agent.getActions());
+            redirectSystemStreams();
+            if (hillClimb.isSelected()) {
+                System.out.print("Acciones\n");
+                printActions(agent.getActions());
+            }
             System.out.print("Instrumentación\n");
             printInstrumentation(agent.getInstrumentation());
+
+            System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+
+            canvas.reDraw(nEst);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -55,21 +55,21 @@ public class GridCiudad extends Canvas {
 
         int maxi = ((int)(getWidth()/separacionW))*separacionW;
         int maxj = ((int)(getHeight()/separacionH))*separacionH;
-        gc.setLineWidth(2);
+        gc.setLineWidth(2.2);
         for (int i = separacionW; i < getWidth(); i+=separacionW) {
             for (int j = separacionH; j < getHeight(); j+=separacionH) {
                 if (j == separacionH) {
                     gc.setStroke(Color.BLACK);
                     gc.setLineWidth(0.3);
                     gc.strokeLine(i, j, i, maxj);
-                    gc.setLineWidth(2);
+                    gc.setLineWidth(2.2);
                     gc.setStroke(Color.RED);
                 }
                 if (i == separacionW) {
                     gc.setStroke(Color.BLACK);
                     gc.setLineWidth(0.3);
                     gc.strokeLine(i, j , maxi, j);
-                    gc.setLineWidth(2);
+                    gc.setLineWidth(2.2);
                     gc.setStroke(Color.RED);
                 }
                 if (i == separacionW || i == maxi || i == getWidth()-separacionW || j == separacionH || j == maxj || j == getHeight()-separacionH) {
