@@ -18,7 +18,7 @@ public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
             Furgoneta f = state.getFurgonetas().get(n);
             int m = rand.nextInt(state.getEstaciones().size());
             Estacion e = state.getEstaciones().get(m);
-            int opt = rand.nextInt(280);
+            int opt = rand.nextInt(283);
             if (opt < 87) {
                 if (state.puedeCambiarEstacionOrigen(e, f)) {
                     Estado nuevoEstado = new Estado(state);
@@ -79,7 +79,7 @@ public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
                     valid = true;
                 }
             }
-            else if (opt >= 277) {
+            else if (opt >= 277 && opt < 280) {
                 if (state.puedeEliminarFurgoneta(n)) {
                     Estado nuevoEstado = new Estado(state);
                     nuevoEstado.eliminarFurgoneta(n);
@@ -87,6 +87,15 @@ public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
                     fhc1.getHeuristicValue(nuevoEstado);
                     retVal.add(new Successor(Estado.ELIMINAR_FURGONETA+" ~"+n+"~ ", nuevoEstado));
                     valid = true;
+                }
+            }
+            else if (opt >= 280) {
+                if (state.puedeAnadirFurgoneta(n)) {
+                    Estado nuevoEstado = new Estado(state);
+                    nuevoEstado.anadirFurgoneta(n);
+                    FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                    fhc1.getHeuristicValue(nuevoEstado);
+                    retVal.add(new Successor(Estado.ANADIR_FURGONETA+" ~"+n+"~ ", nuevoEstado));
                 }
             }
         }
