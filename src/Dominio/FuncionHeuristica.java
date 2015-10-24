@@ -6,6 +6,7 @@ package Dominio; /**
 import IA.Bicing.Estacion;
 import aima.search.framework.HeuristicFunction;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FuncionHeuristica implements HeuristicFunction{
     public double getHeuristicValue(Object n)
@@ -13,8 +14,9 @@ public class FuncionHeuristica implements HeuristicFunction{
         Estado state = (Estado) n;
         ArrayList<Furgoneta> furg = state.getFurgonetas();
         double suma;
-
+        HashMap<Estacion, Boolean> mapp = new HashMap<>();
         double sum_cost = 0;
+        double sum_acord = 0;
         for (Furgoneta f : furg) {
             if (!f.estaVacia()) {
                 int trayecto1 = Math.abs(f.getOrigen().getCoordX() - f.getPrimerDestino().getCoordX()) + Math.abs(f.getOrigen().getCoordY() - f.getPrimerDestino().getCoordY());
@@ -24,34 +26,38 @@ public class FuncionHeuristica implements HeuristicFunction{
                 int e_k1 = ((nb1 + 9) / 10);
                 int e_k2 = ((nb2 + 9) / 10);
                 sum_cost += e_k1 * trayecto1 + e_k2 * trayecto2;
+
+                int eur = 0;
+                Estacion o = f.getOrigen();
+                if (!mapp.containsKey(o))
+                {
+                    mapp.put(o, true);
+                    if (o.getNumBicicletasNext() - state.getBicisE().get(Estado.getM().get(o)) < o.getDemanda())
+                        eur = (o.getNumBicicletasNext() - f.getBicisEstacionOrigen()) - o.getDemanda();
+                }
+
+                Estacion d1 = f.getPrimerDestino();
+                if (!mapp.containsKey(d1)) {
+                    mapp.put(d1,true);
+                    if (d1.getDemanda() >= d1.getNumBicicletasNext() + f.getBicisPrimeraEstacion())
+                        eur += f.getBicisPrimeraEstacion();
+                }
+
+                if (f.getSegundoDestino() != null)
+                {
+                    Estacion d2 = f.getSegundoDestino();
+                    if(!mapp.containsKey(d2)) {
+                        mapp.put(d2, true);
+                        if (d2.getDemanda() >= d2.getNumBicicletasNext() + f.getBicisSegundaEstacion())
+                            eur += f.getBicisSegundaEstacion();
+                    }
+                }
+                sum_acord += eur;
             }
+
         }
 
-        double sum_acord = 0;
-
-
-        ArrayList<Estacion> est = state.getEstaciones();
-        for (int i = 0; i < est.size(); ++i)
-        {
-            Estacion e = est.get(i);
-            int bicis_llevadas = state.getBicisE().get(i);
-            int eur;
-            if (e.getDemanda() >= e.getNumBicicletasNext())
-            {
-                if (e.getDemanda() >= e.getNumBicicletasNext() + bicis_llevadas)
-                    eur = bicis_llevadas;
-                else eur = 0;//e.getDemanda()-e.getNumBicicletasNext();
-            }
-            else
-            {
-                if (e.getNumBicicletasNext()+bicis_llevadas >= e.getDemanda()) eur = 0;
-                else eur = (e.getNumBicicletasNext()+bicis_llevadas) - e.getDemanda();
-            }
-            sum_acord += eur;
-
-        }
-
-        suma = sum_cost + sum_acord;
+        suma = sum_acord - sum_cost;
         System.out.print(suma+"\n");
         return -suma;
     }

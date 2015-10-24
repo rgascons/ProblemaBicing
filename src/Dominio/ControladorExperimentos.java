@@ -109,13 +109,76 @@ public class ControladorExperimentos {
                 }
                 break;
             case 5:
-                System.out.println("Experimento: Diferencia de Beneficio");
+                try {
+                    System.out.println("Experimento: Diferencia de Beneficio");
+                    Estaciones estaciones = new Estaciones(25, 1250, 0, (int) System.nanoTime());
+                    Estado estado = new Estado(1, 5, estaciones, (int) System.nanoTime());
+                    System.out.println("\tHill Climbing");
+                    Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristica());
+                    Search search = new HillClimbingSearch();
+                    SearchAgent agent = new SearchAgent(problem, search);
+                    System.out.print("Acciones\n");
+                    printActions(agent.getActions());
+                    System.out.print("Instrumentación\n");
+                    printInstrumentation(agent.getInstrumentation());
+                    System.out.println("\tSimulated Annealing");
+                    Problem problem2 = new Problem(estado, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristica());
+                    Search search2 = new HillClimbingSearch();
+                    SearchAgent agent2 = new SearchAgent(problem2, search2);
+                    System.out.print("Instrumentación\n");
+                    printInstrumentation(agent2.getInstrumentation());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case 6:
+                try {
+                    System.out.println("Elige el número de estaciones:\n");
+                    int ne = s.nextInt();
+                    Estaciones estaciones = new Estaciones(ne, ne*50, 1, (int)System.nanoTime());
+                    Estado estado = new Estado(1, ne/5, estaciones, (int)System.nanoTime());
+                    Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
+                    Search search = new HillClimbingSearch();
+                    SearchAgent agent = new SearchAgent(problem, search);
+                    System.out.print("Acciones\n");
+                    printActions(agent.getActions());
+                    System.out.print("Instrumentación\n");
+                    printInstrumentation(agent.getInstrumentation());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case 7:
+                try {
+                    System.out.println("Elige el número de furgonetas:\n");
+                    int nf = s.nextInt();
+                    Estaciones estaciones = new Estaciones(25, 1250, 0, (int)System.nanoTime());
+                    Estado estado = new Estado(1, nf, estaciones, (int)System.nanoTime());
+                    Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
+                    Search search = new HillClimbingSearch();
+                    SearchAgent agent = new SearchAgent(problem, search);
+                    System.out.print("Acciones\n");
+                    printActions(agent.getActions());
+                    System.out.print("Instrumentación\n");
+                    printInstrumentation(agent.getInstrumentation());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case 8:
+                try {
+                    Estaciones estaciones = new Estaciones(25, 1250, 0, 1234);
+                    Estado estado = new Estado(1, 5, estaciones, 1234);
+                    Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
+                    Search search = new HillClimbingSearch();
+                    SearchAgent agent = new SearchAgent(problem, search);
+                    System.out.print("Acciones\n");
+                    printActions(agent.getActions());
+                    System.out.print("Instrumentación\n");
+                    printInstrumentation(agent.getInstrumentation());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 System.out.println("Esto no es un experimento. Cerrando el programa...");
