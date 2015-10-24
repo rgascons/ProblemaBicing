@@ -1,4 +1,4 @@
-/**
+package Dominio; /**
  * Función heurística C1
  * Created by falc on 7/10/15.
  */

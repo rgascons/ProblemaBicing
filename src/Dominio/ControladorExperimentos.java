@@ -1,3 +1,5 @@
+package Dominio;
+
 import IA.Bicing.Estaciones;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
@@ -71,7 +73,7 @@ public class ControladorExperimentos {
                     System.out.println("Experimento: Simulated Annealing");
                     Estaciones estaciones = new Estaciones(25, 1250, 0, (int)System.nanoTime());
                     Estado estado = new Estado(1,5, estaciones, (int)System.nanoTime());
-                    Problem problem = new Problem(estado, new FuncionSucesoraSimulatedAnnealing(), new GoalTest(), new FuncionHeuristicaC1());
+                    Problem problem = new Problem(estado, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristicaC1());
                     Search search = new SimulatedAnnealingSearch(p,pgt,k,lambda);
                     SearchAgent agent = new SearchAgent(problem, search);
                     //System.out.print("Acciones\n");

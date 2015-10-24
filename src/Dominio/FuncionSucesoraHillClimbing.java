@@ -1,3 +1,5 @@
+package Dominio;
+
 import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 import aima.search.framework.Successor;
@@ -15,8 +17,8 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
         Furgonetas furgonetas = estado.getFurgonetas();
         Estaciones estaciones = estado.getEstaciones();
         /*System.out.print("-----\n");
-        for (Furgoneta furgoneta : furgonetas)
-            System.out.print(Estado.getM().get(furgoneta.getOrigen()) + "->" + Estado.getM().get(furgoneta.getPrimerDestino()) + "->" + Estado.getM().get(furgoneta.getSegundoDestino()) + "\n");
+        for (Dominio.Furgoneta furgoneta : furgonetas)
+            System.out.print(Dominio.Estado.getM().get(furgoneta.getOrigen()) + "->" + Dominio.Estado.getM().get(furgoneta.getPrimerDestino()) + "->" + Dominio.Estado.getM().get(furgoneta.getSegundoDestino()) + "\n");
         System.out.print("-----\n");*/
         for (int i = 0 ; i < furgonetas.size();++i) {
             Furgoneta f = furgonetas.get(i);
@@ -95,12 +97,12 @@ public class FuncionSucesoraHillClimbing implements SuccessorFunction {
 
             /*for (int j = 0; j <= f.getOrigen().getNumBicicletasNoUsadas(); ++j) {
                 if (estado.puedeRecogerBicis(f, j)) {
-                    Estado nuevoEstado = new Estado(estado);
-                    Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
+                    Dominio.Estado nuevoEstado = new Dominio.Estado(estado);
+                    Dominio.Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
                     nuevoEstado.recogerBicis(neo, j);
-                    /*FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+                    /*Dominio.FuncionHeuristicaC1 fhc1 = new Dominio.FuncionHeuristicaC1();
                     //fhc1.getHeuristicValue(nuevoEstado);
-                    retVal.add(new Successor(Estado.RECOGER_BICIS+" #"+i+"# {{" + j + "}}", nuevoEstado));
+                    retVal.add(new Successor(Dominio.Estado.RECOGER_BICIS+" #"+i+"# {{" + j + "}}", nuevoEstado));
                 }
             }*/
         }

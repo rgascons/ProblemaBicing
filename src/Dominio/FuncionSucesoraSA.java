@@ -1,3 +1,5 @@
+package Dominio;
+
 import IA.Bicing.Estacion;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
@@ -6,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class FuncionSucesoraSimulatedAnnealing implements SuccessorFunction {
+public class FuncionSucesoraSA implements SuccessorFunction {
 
     private static int DENOMINADOR_OPERADORES = 283;
     private static int MAX_ITERACIONES = DENOMINADOR_OPERADORES * 4;

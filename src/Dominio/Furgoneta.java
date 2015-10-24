@@ -1,3 +1,5 @@
+package Dominio;
+
 import IA.Bicing.Estacion;
 
 public class Furgoneta implements Cloneable {

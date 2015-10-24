@@ -1,3 +1,5 @@
+package Dominio;
+
 import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 
@@ -500,7 +502,7 @@ public class Estado {
 
     public void writeEstado() {
         for (int i = 0; i < furgonetas.size(); ++i) {
-            System.out.println("Furgoneta num " + i);
+            System.out.println("Dominio.Furgoneta num " + i);
             Furgoneta f = furgonetas.get(i);
             if (!f.estaVacia()) f.writeFurgoneta();
             else System.out.println("esta vacia ");

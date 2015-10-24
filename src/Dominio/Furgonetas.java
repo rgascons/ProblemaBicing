@@ -1,3 +1,5 @@
+package Dominio;
+
 import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 

@@ -1,3 +1,5 @@
+package Dominio;
+
 public class GoalTest implements aima.search.framework.GoalTest{
 
     @Override
