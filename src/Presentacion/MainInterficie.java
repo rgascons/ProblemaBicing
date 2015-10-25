@@ -259,11 +259,17 @@ public class MainInterficie extends Application{
         if (hillClimb.isSelected()) {
             search = new HillClimbingSearch();
             if (H1.isSelected()) {
-                problem = new Problem(
-                        estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristica());
-            } else {    //H2
-                problem = new Problem(
+                if (operadoresv1.isSelected())
+                    problem = new Problem(
+                        estadoInicial, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
+                else problem = new Problem(
                         estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristicaC1());
+            } else {    //H2
+                if (operadoresv1.isSelected())
+                    problem = new Problem(
+                        estadoInicial, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristica());
+                else problem = new Problem(
+                        estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristica());
             }
         } else {    //annealing
             int nIt = Integer.parseInt(numIt.getText());

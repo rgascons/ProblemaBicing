@@ -17,6 +17,7 @@ public class FuncionHeuristica implements HeuristicFunction{
         HashMap<Estacion, Boolean> mapp = new HashMap<>();
         double sum_cost = 0;
         double sum_acord = 0;
+        double distancia = 0;
         for (Furgoneta f : furg) {
             if (!f.estaVacia()) {
                 int trayecto1 = Math.abs(f.getOrigen().getCoordX() - f.getPrimerDestino().getCoordX()) + Math.abs(f.getOrigen().getCoordY() - f.getPrimerDestino().getCoordY());
@@ -26,6 +27,8 @@ public class FuncionHeuristica implements HeuristicFunction{
                 int e_k1 = ((nb1 + 9) / 10);
                 int e_k2 = ((nb2 + 9) / 10);
                 sum_cost += e_k1 * trayecto1 + e_k2 * trayecto2;
+
+                distancia += trayecto1+trayecto2;
 
                 int eur = 0;
                 Estacion o = f.getOrigen();
@@ -58,7 +61,7 @@ public class FuncionHeuristica implements HeuristicFunction{
         }
 
         suma = sum_acord - sum_cost;
-        System.out.print(suma+"\n");
+        System.out.print(sum_acord+"€, "+sum_cost+"€, "+distancia+" m \n");
         return -suma;
     }
 }

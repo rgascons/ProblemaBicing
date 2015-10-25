@@ -15,7 +15,6 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
     {
         Estado state = (Estado) n;
         double sum_acord = 0;
-        double bicistotal = 0;
         double distancia = 0;
         Furgonetas fur = state.getFurgonetas();
         HashMap<Estacion, Boolean> mapp = new HashMap<>();
@@ -56,27 +55,6 @@ public class FuncionHeuristicaC1 implements HeuristicFunction{
             }
         }
 
-        /*
-        ArrayList<Estacion> est = state.getEstaciones();
-        for (int i = 0; i < est.size(); ++i)
-        {
-            Estacion e = est.get(i);
-            int bicis_llevadas = state.getBicisE().get(i);
-            int eur;
-            if (e.getDemanda() >= e.getNumBicicletasNext())
-            {
-                if (e.getDemanda() >= e.getNumBicicletasNext() + bicis_llevadas)
-                    eur = bicis_llevadas;
-                else eur = 0;//e.getDemanda()-e.getNumBicicletasNext();
-            }
-            else
-            {
-                if (e.getNumBicicletasNext()+bicis_llevadas >= e.getDemanda()) eur = 0;
-                else eur = (e.getNumBicicletasNext()+bicis_llevadas) - e.getDemanda();
-            }
-            sum_acord += eur;
-            bicistotal += bicis_llevadas+e.getNumBicicletasNext();
-        }*/
         System.out.print(sum_acord+", "+distancia+"\n");
         return -sum_acord;
     }
