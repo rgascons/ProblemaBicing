@@ -24,6 +24,8 @@ import java.util.Properties;
 
 public class MainInterficie extends Application{
 
+    private static double finalCost;
+
     private NumberTextField nEstText;
     private NumberTextField nFurgText;
     private NumberTextField nBicisText;
@@ -315,6 +317,7 @@ public class MainInterficie extends Application{
             SearchAgent agent = new SearchAgent(problem, search);
             long endTime = System.currentTimeMillis();
             redirectSystemStreams();
+            System.out.println("Solucion final: " + finalCost);
             System.out.println("Tiempo de ejecucion: " + (endTime-startTime));
             if (hillClimb.isSelected()) {
                 System.out.print("---Acciones---\n");
@@ -330,6 +333,10 @@ public class MainInterficie extends Application{
             e.printStackTrace();
         }
 
+    }
+
+    public static void setFinalCost(double cost) {
+        finalCost = cost;
     }
 
     private static void printActions(List actions) {
