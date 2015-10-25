@@ -259,17 +259,21 @@ public class MainInterficie extends Application{
         if (hillClimb.isSelected()) {
             search = new HillClimbingSearch();
             if (H1.isSelected()) {
-                if (operadoresv1.isSelected())
+                if (operadoresv1.isSelected()) {
                     problem = new Problem(
-                        estadoInicial, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
-                else problem = new Problem(
-                        estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristicaC1());
+                            estadoInicial, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristica());
+                } else {
+                    problem = new Problem(
+                            estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristica());
+                }
             } else {    //H2
-                if (operadoresv1.isSelected())
+                if (operadoresv1.isSelected()) {
                     problem = new Problem(
-                        estadoInicial, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristica());
-                else problem = new Problem(
-                        estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristica());
+                            estadoInicial, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
+                } else {
+                    problem = new Problem(
+                            estadoInicial, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristicaC1());
+                }
             }
         } else {    //annealing
             int nIt = Integer.parseInt(numIt.getText());
@@ -277,6 +281,7 @@ public class MainInterficie extends Application{
             int ik = Integer.parseInt(k.getText());
             double lamd = Double.parseDouble(lambda.getText());
             search = new SimulatedAnnealingSearch(nIt,pasos,ik,lamd);
+            //Los operadores solo tienen efecto con Hill Climbing
             if (H1.isSelected()) {
                 problem = new Problem(
                         estadoInicial, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristica());
@@ -287,8 +292,11 @@ public class MainInterficie extends Application{
         }
         try {
             log.clear();
+            long startTime = System.currentTimeMillis();
             SearchAgent agent = new SearchAgent(problem, search);
+            long endTime = System.currentTimeMillis();
             redirectSystemStreams();
+            System.out.println("Tiempo de ejecucion: " + (endTime-startTime));
             if (hillClimb.isSelected()) {
                 System.out.print("---Acciones---\n");
                 printActions(agent.getActions());
