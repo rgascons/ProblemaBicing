@@ -292,11 +292,21 @@ public class MainInterficie extends Application{
             search = new SimulatedAnnealingSearch(nIt,pasos,ik,lamd);
             //Los operadores solo tienen efecto con Hill Climbing
             if (H1.isSelected()) {
-                problem = new Problem(
-                        estadoInicial, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristica());
+                if (operadoresv1.isSelected()) {
+                    problem = new Problem(
+                            estadoInicial, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristica());
+                } else {
+                    problem = new Problem(
+                            estadoInicial, new FuncionSucesoraSA2(), new GoalTest(), new FuncionHeuristica());
+                }
             } else {    //H2
-                problem = new Problem(
-                        estadoInicial, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristicaC1());
+                if (operadoresv1.isSelected()) {
+                    problem = new Problem(
+                            estadoInicial, new FuncionSucesoraSA(), new GoalTest(), new FuncionHeuristicaC1());
+                } else {
+                    problem = new Problem(
+                            estadoInicial, new FuncionSucesoraSA2(), new GoalTest(), new FuncionHeuristicaC1());
+                }
             }
         }
         try {
