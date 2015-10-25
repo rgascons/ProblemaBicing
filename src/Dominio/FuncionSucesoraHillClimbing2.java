@@ -102,7 +102,7 @@ public class FuncionSucesoraHillClimbing2 implements SuccessorFunction {
 
             }
 
-            for (int j = 0; j <= f.getOrigen().getNumBicicletasNoUsadas(); ++j) {
+            for (int j = 0; j <= 30; ++j) {
                 if (estado.puedeRecogerBicis(f, j)) {
                     Estado nuevoEstado = new Estado(estado);
                     Furgoneta neo = nuevoEstado.getFurgonetas().get(i);
