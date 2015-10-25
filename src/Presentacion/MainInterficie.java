@@ -30,6 +30,7 @@ public class MainInterficie extends Application{
     private RadioButton randomSeed;
     private RadioButton customSeed;
     private NumberTextField customSeedField;
+    private CheckBox rushHour;
     private GridCiudad canvas;
     private TextArea log;
     private ProgressBar progressBar;
@@ -56,13 +57,13 @@ public class MainInterficie extends Application{
 
         Label nEst = new Label("  N. Est: ");
         nEstText = new NumberTextField();
-        nEstText.setMaxWidth(75);
+        nEstText.setMaxWidth(60);
         Label nFurg = new Label("  N. Furg: ");
         nFurgText = new NumberTextField();
-        nFurgText.setMaxWidth(75);
+        nFurgText.setMaxWidth(60);
         Label nBicis = new Label("  N. Bicis: ");
         nBicisText = new NumberTextField();
-        nBicisText.setMaxWidth(75);
+        nBicisText.setMaxWidth(60);
         Label seed = new Label("  Seed: ");
         ToggleGroup seedGroup = new ToggleGroup();
         randomSeed = new RadioButton("Random");
@@ -73,14 +74,16 @@ public class MainInterficie extends Application{
         HBox parametresBicis = new HBox();
         customSeedField = new NumberTextField();
         customSeedField.setDisable(true);
-        customSeedField.setMaxWidth(75);
+        customSeedField.setMaxWidth(60);
         customSeed.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (!oldValue && newValue)
                 customSeedField.setDisable(false);
             else customSeedField.setDisable(true);
         });
+        rushHour = new CheckBox("Hora punta");
+        rushHour.setSelected(false);
         parametresBicis.getChildren().addAll(
-                nEst, nEstText, nFurg, nFurgText, nBicis, nBicisText, seed, randomSeed, customSeed, customSeedField);
+                nEst, nEstText, nFurg, nFurgText, nBicis, nBicisText, seed, randomSeed, customSeed, customSeedField, rushHour);
         parametresBicis.setAlignment(Pos.TOP_CENTER);
 
         canvas = new GridCiudad(400, 400);
@@ -202,6 +205,7 @@ public class MainInterficie extends Application{
         nBicisText.setText("");
         randomSeed.setSelected(true);
         customSeedField.setText("");
+        rushHour.setSelected(false);
         canvas.clear();
         log.clear();
         hillClimb.setSelected(true);
@@ -247,7 +251,12 @@ public class MainInterficie extends Application{
         if (randomSeed.isSelected())
             seed = (int)System.nanoTime();
         else seed = Integer.parseInt(customSeedField.getText());
-        Estaciones estaciones = new Estaciones(nEst, nBicis, 0, seed);
+        Estaciones estaciones;
+        if (rushHour.isSelected()) {
+            estaciones = new Estaciones(nEst, nBicis, 1, seed);
+        } else {    //hora normal
+            estaciones = new Estaciones(nEst, nBicis, 0, seed);
+        }
         Estado estadoInicial;
         if (generadorRand.isSelected()) {
             estadoInicial = new Estado(1, nFurg, estaciones, seed);
