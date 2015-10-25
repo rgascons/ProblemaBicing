@@ -322,7 +322,7 @@ public class Estado {
     }
 
     public boolean puedeRecogerBicis(Furgoneta f, int n) {
-        return n <= f.getOrigen().getNumBicicletasNoUsadas() && n >= 0 && n <= 30;
+        return !f.estaVacia() && n <= f.getOrigen().getNumBicicletasNoUsadas() && n >= 0 && n <= 30;
     }
 
     public void recogerBicis(Furgoneta f, int n) {
