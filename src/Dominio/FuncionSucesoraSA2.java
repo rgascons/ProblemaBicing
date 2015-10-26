@@ -75,7 +75,7 @@ public class FuncionSucesoraSA2 implements SuccessorFunction {
             }
             else if (opt >= 267 && opt < 277) {
                 int fgr = f.getBicisEstacionOrigen();
-                int j = (fgr == 0)? 0: rand.nextInt(f.getBicisEstacionOrigen());
+                int j = (fgr < 1)? 0: rand.nextInt(f.getBicisEstacionOrigen());
                 if (state.puedeDejarBicis(f, j)) {
                     Estado nuevoEstado = new Estado(state);
                     Furgoneta neo = nuevoEstado.getFurgonetas().get(n);

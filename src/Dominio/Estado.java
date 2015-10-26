@@ -61,7 +61,6 @@ public class Estado {
             default:
                 System.out.println("El indice no es valido");
         }
-        //this.writeEstado();
     }
 
     public Estado(Estado estado) {
@@ -206,7 +205,7 @@ public class Estado {
                 int bicisCoger = e.getNumBicicletasNoUsadas() + e.getNumBicicletasNext() - e.getDemanda();//Para saber cuantas puedo coger
                 int bicisOrigen = (bicisCoger > 30) ? 30 : bicisCoger;
                 par p = new par(e, bicisOrigen);
-                //System.out.println("He metido la estacion " + i + " en la cola de origen con " + bicisOrigen + " bicis");
+                //System.out.println("He metido la estacion " + i + "en la cola de origen con " + bicisOrigen + "bicis");
                 estacionesOrigen.add(p);
             } else {
                 //System.out.println("He metido la estacion " + i + " en la cola de destinos");
@@ -217,6 +216,7 @@ public class Estado {
         while (i < nf && !estacionesOrigen.isEmpty() && !estacionesDestino.isEmpty()) {
             par p = estacionesOrigen.peek();
             estacionesOrigen.poll();
+            ini.set(m.get(p.getOrigen()),true);
             Estacion origen = p.getOrigen();
             int bicisOrigen = p.getBicisOrigen();
             Estacion primerDestino = estacionesDestino.peek();
@@ -243,6 +243,8 @@ public class Estado {
             ++i;
         }
         for (int j = i; j < nf; ++j) furgonetas.add(new Furgoneta(null, null, null, 0, 0));
+        FuncionHeuristicaC1 fhc1 = new FuncionHeuristicaC1();
+        fhc1.getHeuristicValue(this);
     }
 
     public static Map<Estacion, Integer> getM() {
@@ -396,6 +398,7 @@ public class Estado {
             bicisE.set(m.get(f.getSegundoDestino()), ob2-old2+f.getBicisSegundaEstacion());
         }
 
+        //TO DO:
     }
 
     public boolean puedeQuitarEstacion(Estacion e, Furgoneta f) {
