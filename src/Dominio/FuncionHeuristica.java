@@ -4,6 +4,7 @@ package Dominio; /**
  */
 
 import IA.Bicing.Estacion;
+import Presentacion.MainInterficie;
 import aima.search.framework.HeuristicFunction;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +62,7 @@ public class FuncionHeuristica implements HeuristicFunction{
         }
 
         suma = sum_acord - sum_cost;
+        MainInterficie.setFinalCost(sum_acord);
         System.out.print(sum_acord+"€, "+sum_cost+"€, "+distancia+" m \n");
         return -suma;
     }
