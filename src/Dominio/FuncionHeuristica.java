@@ -27,7 +27,7 @@ public class FuncionHeuristica implements HeuristicFunction{
                 int nb2 = f.getBicisEstacionOrigen() - f.getBicisPrimeraEstacion();
                 int e_k1 = ((nb1 + 9) / 10);
                 int e_k2 = ((nb2 + 9) / 10);
-                sum_cost += e_k1 * trayecto1 + e_k2 * trayecto2;
+                sum_cost += e_k1 * (trayecto1/100) + e_k2 * (trayecto2/100);
 
                 distancia += trayecto1+trayecto2;
 

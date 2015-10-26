@@ -181,11 +181,15 @@ public class ControladorExperimentos {
                 break;
             case 7:
                 try {
-                    System.out.println("Elige el número de furgonetas:\n");
+                    System.out.println("Elige el número de estaciones:");
+                    int nb = s.nextInt();
+                    System.out.println("Elige el número de furgonetas:");
                     int nf = s.nextInt();
-                    Estaciones estaciones = new Estaciones(25, 1250, 0, (int)System.nanoTime());
-                    Estado estado = new Estado(1, nf, estaciones, (int)System.nanoTime());
-                    Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing(), new GoalTest(), new FuncionHeuristicaC1());
+                    System.out.println("Elige el tipo de escenario:");
+                    int te = s.nextInt();
+                    Estaciones estaciones = new Estaciones(nb, nb*50, te, (int)System.nanoTime());
+                    Estado estado = new Estado(2, nf, estaciones, (int)System.nanoTime());
+                    Problem problem = new Problem(estado, new FuncionSucesoraHillClimbing2(), new GoalTest(), new FuncionHeuristicaC1());
                     Search search = new HillClimbingSearch();
                     SearchAgent agent = new SearchAgent(problem, search);
                     System.out.print("Acciones\n");
