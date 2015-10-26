@@ -306,7 +306,7 @@ public class Estado {
     }
 
     public boolean puedeDejarBicis(Furgoneta f, int n) {
-        return n >= 0 && n <= f.getBicisEstacionOrigen() && noNulo(f.getPrimerDestino());
+        return !f.estaVacia() && n >= 0 && n <= f.getBicisEstacionOrigen() && noNulo(f.getPrimerDestino());
     }
 
     public void dejarBicis(Furgoneta f, int n) {
